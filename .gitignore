@@ -1,0 +1,5 @@
+*.o
+*.cf
+*.ghw
+reg16bits
+reg16bits_tb

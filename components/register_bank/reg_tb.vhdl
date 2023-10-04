@@ -2,16 +2,16 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity reg16bits_tb is
-end reg16bits_tb;
+entity reg_tb is
+end reg_tb;
 
-architecture a_reg16bits_tb of reg16bits_tb is
+architecture a_reg_tb of reg_tb is
     signal wr_en, rst, clk : std_logic;
     signal data_in, data_out : unsigned(15 downto 0);
     constant period_time : time      := 100 ns;
     signal   finished    : std_logic := '0';
 begin
-    reg16bit_inst: entity work.reg16bits(a_reg16bits)
+    reg16bit_inst: entity work.reg(a_reg)
         port map(
             data_in => data_in,
             wr_en => wr_en,

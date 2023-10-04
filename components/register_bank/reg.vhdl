@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity reg16bits is
+entity reg is
     port (
         data_in : in unsigned(15 downto 0);
         wr_en : in std_logic;
@@ -10,9 +10,9 @@ entity reg16bits is
         clk : in std_logic;
         data_out : out unsigned(15 downto 0)
     );
-end reg16bits;
+end reg;
 
-architecture a_reg16bits of reg16bits is
+architecture a_reg of reg is
     signal reg : unsigned(15 downto 0);
 begin
     process(clk, rst, wr_en)
@@ -28,4 +28,4 @@ begin
 
     data_out <= reg;
     
-end a_reg16bits;
+end a_reg;
