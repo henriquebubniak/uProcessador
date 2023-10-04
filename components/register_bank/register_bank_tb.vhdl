@@ -85,12 +85,12 @@ architecture a_register_bank_tb of register_bank_tb is
             report "rst = 0 & reg2 != 0";
             
             writeEn <= '0';
-            writeReg <= "000";
+            writeReg <= "001";
             writeData <= x"ABCD";
             readReg1 <= "000";
-            readReg2 <= "000";
+            readReg2 <= "001";
             wait for period_time;
-            assert reg1 = x"0000"
+            assert reg2 = x"0000"
             report "writeEn = 0 and reg was written";
             
             writeEn <= '1';
@@ -99,8 +99,8 @@ architecture a_register_bank_tb of register_bank_tb is
             readReg1 <= "000";
             readReg2 <= "000";
             wait for period_time;
-            assert reg1 = x"ABCD"
-            report "writeEn = 1 and reg was not written";
+            assert reg1 = x"0000"
+            report "reg 0 was written";
 
             writeEn <= '1';
             writeReg <= "001";
@@ -108,8 +108,8 @@ architecture a_register_bank_tb of register_bank_tb is
             readReg1 <= "000";
             readReg2 <= "001";
             wait for period_time;
-            assert reg1 = x"ABCD"
-            report "reg1 was not read correctly";
+            assert reg1 = x"0000"
+            report "reg 0 was written";
             assert reg2 = x"ABCD"
             report "reg2 was not written";
         

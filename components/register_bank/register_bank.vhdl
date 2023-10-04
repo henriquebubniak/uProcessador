@@ -33,6 +33,7 @@ begin
             end if;
         end if;
     end process;
+    regFile(0) <= x"0000";
     reg1 <= regFile(to_integer(unsigned(readReg1)));
     reg2 <= regFile(to_integer(unsigned(readReg2)));
     
