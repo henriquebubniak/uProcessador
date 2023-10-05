@@ -1,0 +1,36 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Thu Oct  5 11:30:53 2023
+[*]
+[dumpfile] "/home/parallels/Documents/arqcomp/uProcessador/components/alu_with_reg_bank/alu_with_reg_bank_tb.ghw"
+[dumpfile_mtime] "Thu Oct  5 11:26:07 2023"
+[dumpfile_size] 3857
+[savefile] "/home/parallels/Documents/arqcomp/uProcessador/components/alu_with_reg_bank/alu_with_reg_bank_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-28.539162 195000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.alu_with_reg_bank_tb.
+[sst_width] 233
+[signals_width] 196
+[sst_expanded] 1
+[sst_vpaned_height] 144
+@28
+top.alu_with_reg_bank_tb.sel_const_reg_b
+top.alu_with_reg_bank_tb.write_en
+top.alu_with_reg_bank_tb.clk
+top.alu_with_reg_bank_tb.rst
+@22
+#{top.alu_with_reg_bank_tb.alu_out[15:0]} top.alu_with_reg_bank_tb.alu_out[15] top.alu_with_reg_bank_tb.alu_out[14] top.alu_with_reg_bank_tb.alu_out[13] top.alu_with_reg_bank_tb.alu_out[12] top.alu_with_reg_bank_tb.alu_out[11] top.alu_with_reg_bank_tb.alu_out[10] top.alu_with_reg_bank_tb.alu_out[9] top.alu_with_reg_bank_tb.alu_out[8] top.alu_with_reg_bank_tb.alu_out[7] top.alu_with_reg_bank_tb.alu_out[6] top.alu_with_reg_bank_tb.alu_out[5] top.alu_with_reg_bank_tb.alu_out[4] top.alu_with_reg_bank_tb.alu_out[3] top.alu_with_reg_bank_tb.alu_out[2] top.alu_with_reg_bank_tb.alu_out[1] top.alu_with_reg_bank_tb.alu_out[0]
+#{top.alu_with_reg_bank_tb.reg_a[15:0]} top.alu_with_reg_bank_tb.reg_a[15] top.alu_with_reg_bank_tb.reg_a[14] top.alu_with_reg_bank_tb.reg_a[13] top.alu_with_reg_bank_tb.reg_a[12] top.alu_with_reg_bank_tb.reg_a[11] top.alu_with_reg_bank_tb.reg_a[10] top.alu_with_reg_bank_tb.reg_a[9] top.alu_with_reg_bank_tb.reg_a[8] top.alu_with_reg_bank_tb.reg_a[7] top.alu_with_reg_bank_tb.reg_a[6] top.alu_with_reg_bank_tb.reg_a[5] top.alu_with_reg_bank_tb.reg_a[4] top.alu_with_reg_bank_tb.reg_a[3] top.alu_with_reg_bank_tb.reg_a[2] top.alu_with_reg_bank_tb.reg_a[1] top.alu_with_reg_bank_tb.reg_a[0]
+#{top.alu_with_reg_bank_tb.reg_b[15:0]} top.alu_with_reg_bank_tb.reg_b[15] top.alu_with_reg_bank_tb.reg_b[14] top.alu_with_reg_bank_tb.reg_b[13] top.alu_with_reg_bank_tb.reg_b[12] top.alu_with_reg_bank_tb.reg_b[11] top.alu_with_reg_bank_tb.reg_b[10] top.alu_with_reg_bank_tb.reg_b[9] top.alu_with_reg_bank_tb.reg_b[8] top.alu_with_reg_bank_tb.reg_b[7] top.alu_with_reg_bank_tb.reg_b[6] top.alu_with_reg_bank_tb.reg_b[5] top.alu_with_reg_bank_tb.reg_b[4] top.alu_with_reg_bank_tb.reg_b[3] top.alu_with_reg_bank_tb.reg_b[2] top.alu_with_reg_bank_tb.reg_b[1] top.alu_with_reg_bank_tb.reg_b[0]
+#{top.alu_with_reg_bank_tb.const[15:0]} top.alu_with_reg_bank_tb.const[15] top.alu_with_reg_bank_tb.const[14] top.alu_with_reg_bank_tb.const[13] top.alu_with_reg_bank_tb.const[12] top.alu_with_reg_bank_tb.const[11] top.alu_with_reg_bank_tb.const[10] top.alu_with_reg_bank_tb.const[9] top.alu_with_reg_bank_tb.const[8] top.alu_with_reg_bank_tb.const[7] top.alu_with_reg_bank_tb.const[6] top.alu_with_reg_bank_tb.const[5] top.alu_with_reg_bank_tb.const[4] top.alu_with_reg_bank_tb.const[3] top.alu_with_reg_bank_tb.const[2] top.alu_with_reg_bank_tb.const[1] top.alu_with_reg_bank_tb.const[0]
+@28
+#{top.alu_with_reg_bank_tb.op[2:0]} top.alu_with_reg_bank_tb.op[2] top.alu_with_reg_bank_tb.op[1] top.alu_with_reg_bank_tb.op[0]
+#{top.alu_with_reg_bank_tb.reg_a_ad[2:0]} top.alu_with_reg_bank_tb.reg_a_ad[2] top.alu_with_reg_bank_tb.reg_a_ad[1] top.alu_with_reg_bank_tb.reg_a_ad[0]
+#{top.alu_with_reg_bank_tb.reg_b_ad[2:0]} top.alu_with_reg_bank_tb.reg_b_ad[2] top.alu_with_reg_bank_tb.reg_b_ad[1] top.alu_with_reg_bank_tb.reg_b_ad[0]
+@29
+#{top.alu_with_reg_bank_tb.write_ad[2:0]} top.alu_with_reg_bank_tb.write_ad[2] top.alu_with_reg_bank_tb.write_ad[1] top.alu_with_reg_bank_tb.write_ad[0]
+[pattern_trace] 1
+[pattern_trace] 0

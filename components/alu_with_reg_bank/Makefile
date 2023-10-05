@@ -5,3 +5,12 @@ clean:
 		find . -type f -name "$$file" -delete; \
 	done
 	
+build:
+	ghdl -a register_bank.vhdl
+	
+	ghdl -a alu.vhdl
+	
+	ghdl -a alu_with_reg_bank.vhdl
+	ghdl -a alu_with_reg_bank_tb.vhdl
+	ghdl -e alu_with_reg_bank_tb
+	ghdl -r alu_with_reg_bank_tb --wave=alu_with_reg_bank_tb.ghw
