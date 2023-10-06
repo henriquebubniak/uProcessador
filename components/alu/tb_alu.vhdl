@@ -77,6 +77,7 @@ begin
         --invalid op
         alu_op <= "010";
         wait for 10 ns;
+        wait;
 
     end process;
 end test_bench; 
