@@ -1,0 +1,26 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Wed Oct 18 19:46:19 2023
+[*]
+[dumpfile] "/home/parallels/Documents/arqcomp/uProcessador/components/control_unit/rom_tb.ghw"
+[dumpfile_mtime] "Wed Oct 18 19:43:24 2023"
+[dumpfile_size] 747
+[savefile] "/home/parallels/Documents/arqcomp/uProcessador/components/control_unit/rom_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-28.365829 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.rom_tb.
+[sst_width] 233
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 144
+@28
+top.rom_tb.clk
+@22
+#{top.rom_tb.endereco[6:0]} top.rom_tb.endereco[6] top.rom_tb.endereco[5] top.rom_tb.endereco[4] top.rom_tb.endereco[3] top.rom_tb.endereco[2] top.rom_tb.endereco[1] top.rom_tb.endereco[0]
+@23
+#{top.rom_tb.dado[13:0]} top.rom_tb.dado[13] top.rom_tb.dado[12] top.rom_tb.dado[11] top.rom_tb.dado[10] top.rom_tb.dado[9] top.rom_tb.dado[8] top.rom_tb.dado[7] top.rom_tb.dado[6] top.rom_tb.dado[5] top.rom_tb.dado[4] top.rom_tb.dado[3] top.rom_tb.dado[2] top.rom_tb.dado[1] top.rom_tb.dado[0]
+[pattern_trace] 1
+[pattern_trace] 0
