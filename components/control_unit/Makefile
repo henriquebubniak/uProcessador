@@ -31,3 +31,17 @@ state_machine_tb: state_machine
 	ghdl -a state_machine_tb.vhdl
 	ghdl -e state_machine_tb
 	ghdl -r state_machine_tb --wave=state_machine_tb.ghw
+
+program_counter:
+	ghdl -a program_counter.vhdl
+	ghdl -e program_counter
+
+program_counter_tb: program_counter
+	ghdl -a program_counter_tb.vhdl
+	ghdl -e program_counter_tb
+	ghdl -r program_counter_tb --wave=program_counter_tb.ghw
+
+pc_incrementer_tb: program_counter
+	ghdl -a pc_incrementer_tb.vhdl
+	ghdl -e pc_incrementer_tb
+	ghdl -r pc_incrementer_tb --wave=pc_incrementer_tb.ghw

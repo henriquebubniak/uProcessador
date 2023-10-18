@@ -1,0 +1,29 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Wed Oct 18 20:43:58 2023
+[*]
+[dumpfile] "/home/parallels/Documents/arqcomp/uProcessador/components/control_unit/program_counter_tb.ghw"
+[dumpfile_mtime] "Wed Oct 18 20:41:49 2023"
+[dumpfile_size] 860
+[savefile] "/home/parallels/Documents/arqcomp/uProcessador/components/control_unit/program_counter_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-28.479040 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.program_counter_tb.
+[sst_width] 233
+[signals_width] 126
+[sst_expanded] 1
+[sst_vpaned_height] 144
+@28
+top.program_counter_tb.clk
+top.program_counter_tb.rst
+top.program_counter_tb.write_enable
+top.program_counter_tb.finished
+@22
+#{top.program_counter_tb.data_in[6:0]} top.program_counter_tb.data_in[6] top.program_counter_tb.data_in[5] top.program_counter_tb.data_in[4] top.program_counter_tb.data_in[3] top.program_counter_tb.data_in[2] top.program_counter_tb.data_in[1] top.program_counter_tb.data_in[0]
+@23
+#{top.program_counter_tb.counter[6:0]} top.program_counter_tb.counter[6] top.program_counter_tb.counter[5] top.program_counter_tb.counter[4] top.program_counter_tb.counter[3] top.program_counter_tb.counter[2] top.program_counter_tb.counter[1] top.program_counter_tb.counter[0]
+[pattern_trace] 1
+[pattern_trace] 0

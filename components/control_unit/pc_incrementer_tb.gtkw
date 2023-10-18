@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Wed Oct 18 20:55:43 2023
+[*]
+[dumpfile] "/home/parallels/Documents/arqcomp/uProcessador/components/control_unit/pc_incrementer_tb.ghw"
+[dumpfile_mtime] "Wed Oct 18 20:54:22 2023"
+[dumpfile_size] 920
+[savefile] "/home/parallels/Documents/arqcomp/uProcessador/components/control_unit/pc_incrementer_tb.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-28.479040 1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.pc_incrementer_tb.
+[sst_width] 233
+[signals_width] 126
+[sst_expanded] 1
+[sst_vpaned_height] 144
+@28
+top.pc_incrementer_tb.write_enable
+top.pc_incrementer_tb.rst
+top.pc_incrementer_tb.clk
+@22
+#{top.pc_incrementer_tb.counter[6:0]} top.pc_incrementer_tb.counter[6] top.pc_incrementer_tb.counter[5] top.pc_incrementer_tb.counter[4] top.pc_incrementer_tb.counter[3] top.pc_incrementer_tb.counter[2] top.pc_incrementer_tb.counter[1] top.pc_incrementer_tb.counter[0]
+@23
+#{top.pc_incrementer_tb.inc[6:0]} top.pc_incrementer_tb.inc[6] top.pc_incrementer_tb.inc[5] top.pc_incrementer_tb.inc[4] top.pc_incrementer_tb.inc[3] top.pc_incrementer_tb.inc[2] top.pc_incrementer_tb.inc[1] top.pc_incrementer_tb.inc[0]
+[pattern_trace] 1
+[pattern_trace] 0
