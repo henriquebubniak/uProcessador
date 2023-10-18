@@ -7,7 +7,7 @@ end rom_tb;
 
 architecture a_rom_tb of rom_tb is
     signal clk : std_logic := '0';
-    signal endereco : unsigned(6 downto 0) := (others => '0');
+    signal address : unsigned(6 downto 0) := (others => '0');
     signal dado : unsigned(13 downto 0) := (others => '0');
     constant period_time : time := 100 ns;
     signal finished : std_logic := '0';
@@ -15,7 +15,7 @@ begin
     rom: entity work.rom(a_rom)
         port map(
             clk => clk,
-            endereco => endereco,
+            address => address,
             dado => dado
         );
         
@@ -39,32 +39,32 @@ begin
 
         process                     
         begin
-            endereco <= "0000000";
+            address <= "0000000";
             wait for period_time;
             assert dado = "00000000000010"
             report "wrong data";
 
-            endereco <= "0000001";
+            address <= "0000001";
             wait for period_time;
             assert dado = "00100000000000"
             report "wrong data";
             
-            endereco <= "0000010";
+            address <= "0000010";
             wait for period_time;
             assert dado = "00000000000000"
             report "wrong data";
 
-            endereco <= "0000011";
+            address <= "0000011";
             wait for period_time;
             assert dado = "00000000000000"
             report "wrong data";
 
-            endereco <= "0000100";
+            address <= "0000100";
             wait for period_time;
             assert dado = "00100000000000"
             report "wrong data";
 
-            endereco <= "0000101";
+            address <= "0000101";
             wait for period_time;
             assert dado = "00000000000010"
             report "wrong data";

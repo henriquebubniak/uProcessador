@@ -45,3 +45,12 @@ pc_incrementer_tb: program_counter
 	ghdl -a pc_incrementer_tb.vhdl
 	ghdl -e pc_incrementer_tb
 	ghdl -r pc_incrementer_tb --wave=pc_incrementer_tb.ghw
+
+pc_with_rom: program_counter rom
+	ghdl -a pc_with_rom.vhdl
+	ghdl -e pc_with_rom
+
+pc_with_rom_tb: pc_with_rom
+	ghdl -a pc_with_rom_tb.vhdl
+	ghdl -e pc_with_rom_tb
+	ghdl -r pc_with_rom_tb --wave=pc_with_rom_tb.ghw

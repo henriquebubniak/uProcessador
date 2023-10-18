@@ -1,0 +1,29 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Wed Oct 18 21:25:51 2023
+[*]
+[dumpfile] "/home/parallels/Documents/arqcomp/uProcessador/components/control_unit/pc_with_rom_tb.ghw"
+[dumpfile_mtime] "Wed Oct 18 21:20:42 2023"
+[dumpfile_size] 1141
+[savefile] "/home/parallels/Documents/arqcomp/uProcessador/components/control_unit/pc_with_rom_tb.gtkw"
+[timestart] 0
+[size] 922 600
+[pos] -1 -1
+*-28.498804 1081000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.pc_with_rom_tb.
+[treeopen] top.pc_with_rom_tb.pc_with_rom_inst.
+[sst_width] 233
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 144
+@28
+top.pc_with_rom_tb.clk
+top.pc_with_rom_tb.rst
+top.pc_with_rom_tb.write_enable
+@22
+#{top.pc_with_rom_tb.rom_out[13:0]} top.pc_with_rom_tb.rom_out[13] top.pc_with_rom_tb.rom_out[12] top.pc_with_rom_tb.rom_out[11] top.pc_with_rom_tb.rom_out[10] top.pc_with_rom_tb.rom_out[9] top.pc_with_rom_tb.rom_out[8] top.pc_with_rom_tb.rom_out[7] top.pc_with_rom_tb.rom_out[6] top.pc_with_rom_tb.rom_out[5] top.pc_with_rom_tb.rom_out[4] top.pc_with_rom_tb.rom_out[3] top.pc_with_rom_tb.rom_out[2] top.pc_with_rom_tb.rom_out[1] top.pc_with_rom_tb.rom_out[0]
+@23
+#{top.pc_with_rom_tb.pc_with_rom_inst.pc[6:0]} top.pc_with_rom_tb.pc_with_rom_inst.pc[6] top.pc_with_rom_tb.pc_with_rom_inst.pc[5] top.pc_with_rom_tb.pc_with_rom_inst.pc[4] top.pc_with_rom_tb.pc_with_rom_inst.pc[3] top.pc_with_rom_tb.pc_with_rom_inst.pc[2] top.pc_with_rom_tb.pc_with_rom_inst.pc[1] top.pc_with_rom_tb.pc_with_rom_inst.pc[0]
+[pattern_trace] 1
+[pattern_trace] 0
