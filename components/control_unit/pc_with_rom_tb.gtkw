@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
-[*] Wed Oct 18 21:25:51 2023
+[*] Thu Oct 19 01:43:49 2023
 [*]
 [dumpfile] "/home/parallels/Documents/arqcomp/uProcessador/components/control_unit/pc_with_rom_tb.ghw"
-[dumpfile_mtime] "Wed Oct 18 21:20:42 2023"
-[dumpfile_size] 1141
+[dumpfile_mtime] "Thu Oct 19 01:42:51 2023"
+[dumpfile_size] 1267
 [savefile] "/home/parallels/Documents/arqcomp/uProcessador/components/control_unit/pc_with_rom_tb.gtkw"
 [timestart] 0
 [size] 922 600
-[pos] -1 -1
-*-28.498804 1081000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] 404 80
+*-29.247738 1081000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] top.
 [treeopen] top.pc_with_rom_tb.
 [treeopen] top.pc_with_rom_tb.pc_with_rom_inst.

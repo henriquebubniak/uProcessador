@@ -4,15 +4,14 @@ use ieee.numeric_std.all;
 
 entity program_counter is
     port (
-        clk, rst : in std_logic;
-        write_enable : in std_logic;
+        clk, rst, write_enable : in std_logic;
         data_in : in unsigned(6 downto 0);
         counter : out unsigned(6 downto 0)
     );
 end program_counter;
 
 architecture a_program_counter of program_counter is
-    signal counter_s : unsigned(6 downto 0);
+    signal counter_s : unsigned(6 downto 0) := (others => '0');
 begin
     process(clk, rst)
     begin

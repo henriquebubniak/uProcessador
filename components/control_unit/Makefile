@@ -54,3 +54,16 @@ pc_with_rom_tb: pc_with_rom
 	ghdl -a pc_with_rom_tb.vhdl
 	ghdl -e pc_with_rom_tb
 	ghdl -r pc_with_rom_tb --wave=pc_with_rom_tb.ghw
+
+control_unit:
+	ghdl -a control_unit.vhdl
+	ghdl -e control_unit
+
+top_level: control_unit rom program_counter
+	ghdl -a top_level.vhdl
+	ghdl -e top_level
+
+top_level_tb: top_level
+	ghdl -a top_level_tb.vhdl
+	ghdl -e top_level_tb
+	ghdl -r top_level_tb --wave=top_level_tb.ghw

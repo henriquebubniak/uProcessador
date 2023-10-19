@@ -1,0 +1,32 @@
+[*]
+[*] GTKWave Analyzer v3.3.104 (w)1999-2020 BSI
+[*] Thu Oct 19 02:35:09 2023
+[*]
+[dumpfile] "/home/parallels/Documents/arqcomp/uProcessador/components/control_unit/top_level_tb.ghw"
+[dumpfile_mtime] "Thu Oct 19 02:34:46 2023"
+[dumpfile_size] 1991
+[savefile] "/home/parallels/Documents/arqcomp/uProcessador/components/control_unit/top_level_tb.gtkw"
+[timestart] 0
+[size] 1330 600
+[pos] -1 -1
+*-28.833521 1327000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.top_level_tb.
+[treeopen] top.top_level_tb.top_level_inst.
+[sst_width] 233
+[signals_width] 166
+[sst_expanded] 1
+[sst_vpaned_height] 247
+@28
+top.top_level_tb.clk
+top.top_level_tb.top_level_inst.pc_clock
+top.top_level_tb.top_level_inst.rom_clock
+@22
+#{top.top_level_tb.rom_out[13:0]} top.top_level_tb.rom_out[13] top.top_level_tb.rom_out[12] top.top_level_tb.rom_out[11] top.top_level_tb.rom_out[10] top.top_level_tb.rom_out[9] top.top_level_tb.rom_out[8] top.top_level_tb.rom_out[7] top.top_level_tb.rom_out[6] top.top_level_tb.rom_out[5] top.top_level_tb.rom_out[4] top.top_level_tb.rom_out[3] top.top_level_tb.rom_out[2] top.top_level_tb.rom_out[1] top.top_level_tb.rom_out[0]
+#{top.top_level_tb.top_level_inst.pc_out[6:0]} top.top_level_tb.top_level_inst.pc_out[6] top.top_level_tb.top_level_inst.pc_out[5] top.top_level_tb.top_level_inst.pc_out[4] top.top_level_tb.top_level_inst.pc_out[3] top.top_level_tb.top_level_inst.pc_out[2] top.top_level_tb.top_level_inst.pc_out[1] top.top_level_tb.top_level_inst.pc_out[0]
+#{top.top_level_tb.top_level_inst.pc_plus_one[6:0]} top.top_level_tb.top_level_inst.pc_plus_one[6] top.top_level_tb.top_level_inst.pc_plus_one[5] top.top_level_tb.top_level_inst.pc_plus_one[4] top.top_level_tb.top_level_inst.pc_plus_one[3] top.top_level_tb.top_level_inst.pc_plus_one[2] top.top_level_tb.top_level_inst.pc_plus_one[1] top.top_level_tb.top_level_inst.pc_plus_one[0]
+#{top.top_level_tb.top_level_inst.jump_address[6:0]} top.top_level_tb.top_level_inst.jump_address[6] top.top_level_tb.top_level_inst.jump_address[5] top.top_level_tb.top_level_inst.jump_address[4] top.top_level_tb.top_level_inst.jump_address[3] top.top_level_tb.top_level_inst.jump_address[2] top.top_level_tb.top_level_inst.jump_address[1] top.top_level_tb.top_level_inst.jump_address[0]
+@29
+top.top_level_tb.top_level_inst.jump
+[pattern_trace] 1
+[pattern_trace] 0
