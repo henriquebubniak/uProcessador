@@ -4,27 +4,27 @@ use ieee.numeric_std.all;
 
 entity rom is
     port( 
-        clk      : in std_logic;
+        clk     : in std_logic;
         address : in unsigned(6 downto 0);
-        data     : out unsigned(13 downto 0) 
+        data    : out unsigned(13 downto 0) 
     );
 end entity;
 
 architecture a_rom of rom is
 
-    type mem is array (0 to 127) of unsigned(15 downto 0);
+    type mem is array (0 to 127) of unsigned(13 downto 0);
     constant content : mem := (
-        0  => "0000000000001000", --0002
-        1  => "0010000000000000", --0800
-        2  => "0000000000000000", --0000
-        3  => "1111000010100000", --0000
-        4  => "1101000000000000", --3C00
-        5  => "0000000000001000", --0002
-        6  => "1111000100001100", --0F03
-        7  => "0000000000001000", --0002
-        8  => "1111000011001100", --0002
-        9  => "0000000000000000", --0000
-        10 => "0000000000000000", --0000
+        0  => "01101001001011", --adc #11 A = 000B
+        1  => "01101001001011", --adc #11 A = 0016
+        2  => "00000000000000", --nop
+        3  => "01101001101000", --adc #40 A = 003E
+        4  => "01101001000000", --adc #0 A = 001E
+        5  => "00000000000010", --nop
+        6  => "11110001000011", --nop
+        7  => "01101001000010", --adc #2 A = 0020
+        8  => "11110000110011", --nop
+        9  => "00000000000000", --nop
+        10 => "00000000000000", --nop
         -- abaixo: casos omissos => (zero em todos os bits)
         others => (others=>'0')
     );
