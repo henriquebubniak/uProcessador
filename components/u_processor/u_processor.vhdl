@@ -116,6 +116,6 @@ begin
     jump_address <= rom_out(6 downto 0);
     pc_plus_one <= pc_out + 1;
     pc_address_mux <= jump_address when jump = '1' else pc_plus_one;
-    alu_src_mux <= "0000000000" & rom_out(5 downto 0) when alu_src = '1' else reg_b_out;
+    alu_src_mux <= ("000000" & rom_out(13 downto 4)) when alu_src = '1' else reg_b_out;
 
 end a_u_processor;
