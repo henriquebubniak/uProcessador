@@ -27,7 +27,7 @@ architecture a_u_processor_tb of u_processor_tb is
 
         sim_time_proc: process
         begin
-            wait for 6 us;         
+            wait for 15 us;         
             finished <= '1';
             wait;
         end process sim_time_proc;

@@ -120,9 +120,9 @@ begin
             st => st,
             eq => eq
         );
-    jump_address <= rom_out(10 downto 4);
+    jump_address <= "0"&rom_out(13 downto 8);
     pc_plus_one <= pc_out + 1;
     pc_address_mux <= jump_address when jump = '1' else pc_plus_one;
-    alu_src_mux <= ("000000" & rom_out(13 downto 4)) when alu_src = '1' else reg_b_out;
+    alu_src_mux <= ("0000000000" & rom_out(13 downto 8)) when alu_src = '1' else reg_b_out;
 
 end a_u_processor;
