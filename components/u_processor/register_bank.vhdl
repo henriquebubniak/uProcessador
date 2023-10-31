@@ -4,7 +4,7 @@ use ieee.numeric_std.all;
 
 entity register_bank is
     port (
-        reg_a_ad, reg_b_ad, write_ad : in unsigned(2 downto 0);
+        reg_a_ad, reg_b_ad, write_ad : in unsigned(4 downto 0);
         write_en, rst, clk : in std_logic;
         write_data : in unsigned(15 downto 0);
         reg_a, reg_b : out unsigned(15 downto 0)
@@ -14,7 +14,7 @@ end register_bank;
 
 architecture a_register_bank of register_bank is
 
-    type reg_array is array (7 downto 0) of unsigned(15 downto 0);
+    type reg_array is array (31 downto 0) of unsigned(15 downto 0);
     signal reg_file : reg_array;
 
 begin

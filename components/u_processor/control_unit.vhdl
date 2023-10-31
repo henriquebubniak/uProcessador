@@ -6,7 +6,7 @@ entity control_unit is
     port (
         clk : in std_logic;
         instruction : in unsigned(13 downto 0);
-        pc_clock, rom_clock, reg_bank_clock, jump, alu_src, write_en : out std_logic;
+        pc_clock, rom_clock, reg_bank_clock, jump, alu_src, write_ad_src, write_en : out std_logic;
         alu_op : out unsigned(2 downto 0)
     );
 end control_unit;
@@ -34,7 +34,7 @@ begin
                '0';
     alu_op <= "000" when (opcode = x"9" or
                           opcode = x"6") else 
-              "001" when (opcode = x"5") else
+              "001" when (opcode = x"E") else
               "000";
     write_en <= '1' when (opcode = x"9" or
                           opcode = x"6" or
@@ -45,5 +45,8 @@ begin
 
     jump <= '1' when opcode = x"F" else 
             '0';
+
+    write_ad_src <= '1' when (opcode = x"5") else
+                    '0';
     
 end a_control_unit;

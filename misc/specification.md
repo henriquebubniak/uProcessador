@@ -12,11 +12,12 @@
 
 ## Instruções
 
-| Instrução | Opcode | Operando | Descrição
-| -         | -      | -        | -
-| adc zpg   | 6      | adr      | A += mem[adr]
-| adc imm   | 9      | val      | A += val
-| sbc imm   | E      | val      | A -= val
-| sta       | 5      | adr      | mem[adr] = A
-| lda imm   | A      | val      | A = val
-| jmp       | F      | adr      | PC = adr
+| Instrução | Opcode | Operando | Descrição     | status
+| -         | -      | -        | -             | -
+| adc zpg   | 6      | adr      | A += mem[adr] | ok
+| adc imm   | 9      | val      | A += val      | ok
+| sbc imm   | E      | val      | A -= val      | ok
+| sta       | 5      | adr      | mem[adr] = A  | not ok
+| lda imm   | A      | val      | A = val       | not ok
+| lda zpg   | B      | adr      | A = mem[adr]  | not ok
+| jmp       | F      | adr      | PC = adr      | ok

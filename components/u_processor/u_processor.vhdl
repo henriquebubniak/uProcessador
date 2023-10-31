@@ -29,14 +29,14 @@ architecture a_u_processor of u_processor is
         port (
             clk : in std_logic;
             instruction : in unsigned(13 downto 0);
-            pc_clock, rom_clock, reg_bank_clock, jump, alu_src, write_en : out std_logic;
+            pc_clock, rom_clock, reg_bank_clock, jump, alu_src, write_en, write_ad_src : out std_logic;
             alu_op : out unsigned(2 downto 0)
         );
     end component;
     
     component register_bank is
         port (
-            reg_a_ad, reg_b_ad, write_ad : in unsigned(2 downto 0);
+            reg_a_ad, reg_b_ad, write_ad : in unsigned(4 downto 0);
             write_en, rst, clk : in std_logic;
             write_data : in unsigned(15 downto 0);
             reg_a, reg_b : out unsigned(15 downto 0)
@@ -53,10 +53,11 @@ architecture a_u_processor of u_processor is
     end component alu;
     
     signal rom_out : unsigned(13 downto 0) := (others => '0');
-    signal pc_clock, rom_clock, reg_bank_clock, jump, alu_src, write_en, zero, ovf, gt, st, eq : std_logic := '0'; 
+    signal pc_clock, rom_clock, reg_bank_clock, jump, alu_src, write_ad_src, write_en, zero, ovf, gt, st, eq : std_logic := '0'; 
     signal pc_plus_one, jump_address, pc_address_mux, pc_out : unsigned(6 downto 0) := (others => '0');
     signal reg_a_out, reg_b_out, alu_src_mux, alu_out : unsigned(15 downto 0) := (others => '0');
     signal alu_op : unsigned(2 downto 0) := (others => '0');
+    signal write_ad_mux : unsigned(4 downto 0) := (others => '0');
 
 begin
     control_unit_inst : control_unit
@@ -69,6 +70,7 @@ begin
             jump => jump,
             alu_src => alu_src,
             write_en => write_en,
+            write_ad_src => write_ad_src,
             alu_op => alu_op
         );
 
@@ -90,9 +92,9 @@ begin
 
     register_bank_inst : register_bank
         port map (
-            reg_a_ad => "001",
-            reg_b_ad => rom_out(2 downto 0),
-            write_ad => "001",
+            reg_a_ad => "00001",
+            reg_b_ad => rom_out(8 downto 4),
+            write_ad => write_ad_mux,
             write_en => write_en,
             rst => rst,
             clk => reg_bank_clock,
@@ -113,9 +115,10 @@ begin
             st => st,
             eq => eq
         );
-    jump_address <= rom_out(6 downto 0);
+    jump_address <= rom_out(10 downto 4);
     pc_plus_one <= pc_out + 1;
     pc_address_mux <= jump_address when jump = '1' else pc_plus_one;
     alu_src_mux <= ("000000" & rom_out(13 downto 4)) when alu_src = '1' else reg_b_out;
+    write_ad_mux <= rom_out(8 downto 4) when write_ad_src = '1' else "00001";
 
 end a_u_processor;
