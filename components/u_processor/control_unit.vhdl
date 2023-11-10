@@ -84,7 +84,8 @@ begin
                 reg_a_ad <= "00000";
                 reg_b_ad <= oper(4 downto 0);
                 alu_op <= "000";
-
+            
+            -- Jump
             when x"4C" =>
                 jump <= '1';
                 alu_src <= '0';
@@ -93,6 +94,11 @@ begin
                 reg_a_ad <= "00000";
                 reg_b_ad <= oper(4 downto 0);
                 alu_op <= "000";
+            
+            -- BEQ
+            when x"F0" =>
+                
+            
 
             when others =>
                 jump <= '0';
