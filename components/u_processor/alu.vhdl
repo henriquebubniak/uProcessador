@@ -7,7 +7,7 @@ entity alu is
         op0, op1: in unsigned(15 downto 0);
         alu_op: in unsigned(2 downto 0);
         result: out unsigned(15 downto 0);
-        zero, ovf, gt, st, eq: out std_logic
+        n,v,z,c: out std_logic
     );
 end alu;
 
@@ -46,11 +46,10 @@ begin
                x"0000";
 
     --flags
-    zero <= '1' when mux_out = 0 else '0';
-    ovf <= '1' when sum_r(16) = '1' and alu_op = "000" else '0';
-    gt <= '1' when op0 > op1 else '0';
-    st <= '1' when op0 < op1 else '0';
-    eq <= '1' when sub_r = 0 else '0';
+    z <= '1' when mux_out = 0 else '0';
+    v <= '1' when sum_r(16) = '1' else '0';
+    c <= '1' when sum_r(16) = '1' else '0';
+    n <= '1' when sum_r(15) = '1' else '0';
 
     result <= mux_out;
 
