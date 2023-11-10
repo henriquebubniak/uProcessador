@@ -29,8 +29,10 @@ architecture a_u_processor of u_processor is
         port (
             clk : in std_logic;
             opcode : in unsigned(7 downto 0);
+            flags: in unsigned(7 downto 0);
             oper: in unsigned(5 downto 0);
             pc_clock, rom_clock, reg_bank_clock, jump, alu_src, write_en : out std_logic;
+            flags_wr: out std_logic;
             write_ad, reg_a_ad, reg_b_ad : out unsigned(4 downto 0);
             alu_op : out unsigned(2 downto 0)
         );
@@ -79,6 +81,7 @@ begin
         port map (
             clk => clk,
             opcode => rom_out(7 downto 0),
+            flags => flags_out,
             oper => rom_out(13 downto 8),
             pc_clock => pc_clock,
             rom_clock => rom_clock,
@@ -87,6 +90,7 @@ begin
             alu_src => alu_src,
             write_en => write_en,
             alu_op => alu_op,
+            flags_wr => flags_wr,
             write_ad => write_ad,
             reg_a_ad => reg_a_ad,
             reg_b_ad => reg_b_ad
@@ -108,7 +112,7 @@ begin
             counter => pc_out
         );
    
-        flags_in <= (n & v & z & c & "0000");
+    flags_in <= (n & v & z & c & "0000");
     flag_reg_inst: flag_reg
         port map(
             input => flags_in,
