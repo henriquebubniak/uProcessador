@@ -155,7 +155,7 @@ begin
         );
     jump_address <= "0"&rom_out(13 downto 8);
     pc_plus_one <= pc_out + 1;
-    branch_address <= pc_out + signal_extender(14 downto 8);
+    branch_address <= pc_out + signal_extender(6 downto 0);
                         
     pc_address_mux <= pc_plus_one when pc_src = b"00" else 
                       jump_address when (pc_src = b"01")  else
