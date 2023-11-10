@@ -23,7 +23,7 @@ architecture a_rom of rom is
         6 => "000000" & x"A9", --lda #0: A = 0
         7 => "000001" & x"69", --adc #1: A = A + 1
         8 => "001010" & x"85", --sta 10 R3 = A (A == 1)
-        9 => "011110" & x"E9", --lda #30: A = A - 30 (1 - 30 == -29)
+        9 => "011110" & x"E9", --sbc #30: A = A - 30 (1 - 30 == -29)
         10 => "000011" & x"30", --bmi #3 (abs)
         -- abaixo: casos omissos => (zero em todos os bits)
         others => (others=>'0')
