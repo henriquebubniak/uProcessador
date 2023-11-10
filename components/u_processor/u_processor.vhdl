@@ -152,8 +152,8 @@ begin
     pc_plus_one <= pc_out + 1;
     pc_address_mux <= jump_address when jump = '1' else pc_plus_one;
     
-    signal_extender <= b"11_1111_1111" & rom_out(13 downto 0) when rom_out(13) = '1'
-                       else b"00_0000_0000" & rom_out(13 downto 0);
+    signal_extender <= b"11_1111_1111" & rom_out(13 downto 8) when rom_out(13) = '1'
+                       else b"00_0000_0000" & rom_out(13 downto 8);
     alu_src_mux <= signal_extender when alu_src = '1' else reg_b_out;
 
 end a_u_processor;

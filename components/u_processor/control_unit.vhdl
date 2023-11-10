@@ -121,6 +121,17 @@ begin
                 reg_a_ad <= "00000";
                 reg_b_ad <= oper(4 downto 0);
                 alu_op <= "000";
+            
+            -- BMI (Branch on minus set)
+            when x"30" =>
+                jump <= flags(0);
+                alu_src <= '0';
+                write_en <= '0';
+                flags_wr <= '0';
+                write_ad <= "00001";
+                reg_a_ad <= "00000";
+                reg_b_ad <= oper(4 downto 0);
+                alu_op <= "000";
            
             -- BCS (Branch on carry set)
             when x"B0" =>
