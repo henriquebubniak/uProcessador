@@ -45,12 +45,20 @@ architecture a_u_processor of u_processor is
         );
     end component register_bank;
 
+    component flag_reg is
+        port (
+            input: unsigned(7 downto 0);
+            output: unsigned(7 downto 0);
+            clk, clear, wr_en: in std_logic
+        );
+    end component flag_reg;
+
     component alu is
         port (
             op0, op1: in unsigned(15 downto 0);
             alu_op: in unsigned(2 downto 0);
             result: out unsigned(15 downto 0);
-            zero, ovf, gt, st, eq: out std_logic
+            n, v, z, c:out std_logic
         );
     end component alu;
     
@@ -60,6 +68,11 @@ architecture a_u_processor of u_processor is
     signal reg_a_out, reg_b_out, alu_src_mux, alu_out : unsigned(15 downto 0) := (others => '0');
     signal alu_op : unsigned(2 downto 0) := (others => '0');
     signal write_ad, reg_a_ad, reg_b_ad : unsigned(4 downto 0) := (others => '0');
+
+    signal flags_clr, flags_wr: std_logic := '0';
+    signal flags_in, flags_out: unsigned(7 downto 0) := x"00";
+
+    signal n,v,z,c: std_logic := '0';
 
 begin
     control_unit_inst : control_unit
@@ -94,6 +107,16 @@ begin
             data_in => pc_address_mux,
             counter => pc_out
         );
+   
+        flags_in <= (n & v & z & c & "0000");
+    flag_reg_inst: flag_reg
+        port map(
+            input => flags_in,
+            output => flags_out,
+            clk => reg_bank_clock,
+            clear => flags_clr,
+            wr_en => flags_wr
+        );
 
     register_bank_inst : register_bank
         port map (
@@ -114,11 +137,10 @@ begin
             op1 => alu_src_mux,
             alu_op => alu_op,
             result => alu_out,
-            zero => zero,
-            ovf => ovf,
-            gt => gt,
-            st => st,
-            eq => eq
+            n => n,
+            v => v,
+            z => z,
+            c => c
         );
     jump_address <= "0"&rom_out(13 downto 8);
     pc_plus_one <= pc_out + 1;
