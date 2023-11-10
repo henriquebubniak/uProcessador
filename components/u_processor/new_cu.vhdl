@@ -26,32 +26,22 @@ begin
             '0';
 
                -- ADC imm, SBC imm, LDA imm
-    alu_src <= '1' when opcode(3 downto 0) = x"9" else
-               -- ADC zpg, STA zpg, LDA zpg
-               '0' when opcode(3 downto 0) = x"5" else
-               -- BEQ, BMI, BCS
-               '0' when opcode(3 downto 0) = x"0" else
-               -- JMP
-               '0' when opcode(3 downto 0) = x"C" else
-               -- others
+    alu_src <= '1' when opcode = x"69" else
+               '1' when opcode = x"E9" else
+               '1' when opcode = x"A9" else
                '0';
 
-    write_en <= '0' when opcode(3 downto 0) = x"0" else
-                '0' when opcode(3 downto 0) = x"C" else
-                '1' when opcode(3 downto 0) = x"5" else
-                '1' when opcode(3 downto 0) = x"9" else
+    write_en <= '1' when opcode = x"65" else
+                '1' when opcode = x"85" else
+                '1' when opcode = x"A5" else
+                '1' when opcode = x"69" else
+                '1' when opcode = x"E9" else
+                '1' when opcode = x"A9" else
                 '0';
     
     flags_wr <= '1' when opcode = x"65" else
                 '1' when opcode = x"69" else
                 '1' when opcode = x"E9" else
-                '0' when opcode = x"85" else
-                '0' when opcode = x"A9" else
-                '0' when opcode = x"A5" else
-                '0' when opcode = x"4C" else
-                '0' when opcode = x"F0" else
-                '0' when opcode = x"30" else
-                '0' when opcode = x"B0" else
                 '0';
 
     write_ad <= "00001" when opcode = x"65" else
@@ -67,7 +57,6 @@ begin
                 "00001" when opcode = x"E9" else
                 "00001" when opcode = x"85" else
                 "00001" when opcode = x"A9" else
-                "00000" when opcode = x"A5" else
                 "00000";
 
     reg_b_ad <= oper(4 downto 0) when opcode = x"65" else
@@ -75,15 +64,9 @@ begin
                 oper(4 downto 0) when opcode = x"E9" else
                 oper(4 downto 0) when opcode = x"A9" else
                 oper(4 downto 0) when opcode = x"A5" else
-                "00000" when opcode = x"85" else
                 "00000";
 
     alu_op <= "001" when opcode = x"E9" else
-              "000" when opcode = x"65" else
-              "000" when opcode = x"69" else
-              "000" when opcode = x"85" else
-              "000" when opcode = x"A9" else
-              "000" when opcode = x"A5" else
               "000";
     
     pc_src <= "01" when opcode = x"4C" else
