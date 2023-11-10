@@ -1,5 +1,5 @@
 clean:
-	find . -type f ! -name '*.vhdl' ! -name '*.gtkw' ! -name 'Makefile' -delete;
+	find . -type f ! -name '*.vhdl' ! -name '*.gtkw' ! -name 'Makefile' ! -name '*.txt' -delete;
 	
 register_bank:
 	ghdl -a register_bank.vhdl
