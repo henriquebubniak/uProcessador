@@ -76,6 +76,8 @@ architecture a_u_processor of u_processor is
 
     signal n,v,z,c: std_logic := '0';
 
+    signal signal_extender: unsigned(15 downto 0) := x"0000";
+
 begin
     control_unit_inst : control_unit
         port map (
@@ -149,6 +151,9 @@ begin
     jump_address <= "0"&rom_out(13 downto 8);
     pc_plus_one <= pc_out + 1;
     pc_address_mux <= jump_address when jump = '1' else pc_plus_one;
-    alu_src_mux <= ("0000000000" & rom_out(13 downto 8)) when alu_src = '1' else reg_b_out;
+    
+    signal_extender <= b"11_1111_1111" & rom_out(13 downto 0) when rom_out(13) = '1'
+                       else b"00_0000_0000" & rom_out(13 downto 0);
+    alu_src_mux <= signal_extender when alu_src = '1' else reg_b_out;
 
 end a_u_processor;
