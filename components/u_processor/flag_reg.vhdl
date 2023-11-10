@@ -6,7 +6,7 @@ entity flag_reg is
     port(
         input: in unsigned(7 downto 0);
         output: out unsigned(7 downto 0);
-        clk, clear: in std_logic
+        clk, clear, wr_en: in std_logic
     );
 end flag_reg;
 
@@ -20,7 +20,7 @@ begin
         if(clear = '1')
         then
             flags <= x"00";
-        elsif (rising_edge(clk))
+        elsif (rising_edge(clk) and wr_en = '1')
         then
             flags <= input;
         end if;
