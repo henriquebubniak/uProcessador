@@ -29,7 +29,7 @@ begin
         end if;
     end process;
     reg_file(0) <= x"0000";
-    reg_a <= reg_file(to_integer(unsigned(reg_a_ad)));
-    reg_b <= reg_file(to_integer(unsigned(reg_b_ad)));
+    reg_a <= reg_file(to_integer(reg_a_ad));
+    reg_b <= reg_file(to_integer(reg_b_ad));
     
 end a_register_bank; 

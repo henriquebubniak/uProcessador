@@ -113,7 +113,7 @@ begin
             -- BEQ (Branch on equals)
             -- flag seq: neg, ovf, zero, carry
             when x"F0" =>
-                jump <= flags(2);
+                jump <= flags(5);
                 alu_src <= '0';
                 write_en <= '0';
                 flags_wr <= '0';
@@ -124,7 +124,7 @@ begin
             
             -- BMI (Branch on minus set)
             when x"30" =>
-                jump <= flags(0);
+                jump <= flags(7);
                 alu_src <= '0';
                 write_en <= '0';
                 flags_wr <= '0';
@@ -135,7 +135,7 @@ begin
            
             -- BCS (Branch on carry set)
             when x"B0" =>
-                jump <= flags(3);
+                jump <= flags(4);
                 alu_src <= '0';
                 write_en <= '0';
                 flags_wr <= '0';

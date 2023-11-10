@@ -49,7 +49,7 @@ begin
     z <= '1' when mux_out = 0 else '0';
     v <= '1' when sum_r(16) = '1' else '0';
     c <= '1' when sum_r(16) = '1' else '0';
-    n <= '1' when sum_r(15) = '1' else '0';
+    n <= '1' when mux_out(15) = '1' else '0';
 
     result <= mux_out;
 

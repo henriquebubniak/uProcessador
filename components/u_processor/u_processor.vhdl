@@ -49,8 +49,8 @@ architecture a_u_processor of u_processor is
 
     component flag_reg is
         port (
-            input: unsigned(7 downto 0);
-            output: unsigned(7 downto 0);
+            input: in unsigned(7 downto 0);
+            output: out unsigned(7 downto 0);
             clk, clear, wr_en: in std_logic
         );
     end component flag_reg;

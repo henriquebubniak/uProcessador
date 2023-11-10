@@ -14,15 +14,15 @@ architecture behavioural of flag_Reg is
     signal flags: unsigned(7 downto 0) := x"00";
 
 begin
-    output <= flags;
     process(clk, clear)
     begin
-        if(clear = '1')
-        then
+        if clear = '1' then
             flags <= x"00";
-        elsif (rising_edge(clk) and wr_en = '1')
-        then
-            flags <= input;
+        elsif rising_edge(clk) then
+            if wr_en = '1'then
+                flags <= input;
+            end if;
         end if;
     end process;
+    output <= flags;
 end behavioural;
