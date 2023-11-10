@@ -33,6 +33,7 @@ architecture a_u_processor of u_processor is
             oper: in unsigned(5 downto 0);
             pc_clock, rom_clock, reg_bank_clock, jump, alu_src, write_en : out std_logic;
             flags_wr: out std_logic;
+            pc_src: out unsigned(1 downto 0);
             write_ad, reg_a_ad, reg_b_ad : out unsigned(4 downto 0);
             alu_op : out unsigned(2 downto 0)
         );
@@ -96,6 +97,7 @@ begin
             write_en => write_en,
             alu_op => alu_op,
             flags_wr => flags_wr,
+            pc_src => pc_src,
             write_ad => write_ad,
             reg_a_ad => reg_a_ad,
             reg_b_ad => reg_b_ad
@@ -154,9 +156,10 @@ begin
     jump_address <= "0"&rom_out(13 downto 8);
     pc_plus_one <= pc_out + 1;
     branch_address <= pc_out + ('0' & rom_out(13 downto 8));
-
-    pc_address_mux <= jump_address when pc_src = b"01" 
-                      branch_address when pc_src = b"10"
+                        
+    pc_address_mux <= pc_plus_one when pc_src = b"00" else 
+                      jump_address when (pc_src = b"01")  else
+                      branch_address when (pc_src = b"10" and jump = '1')
                       else pc_plus_one;
     
     signal_extender <= b"11_1111_1111" & rom_out(13 downto 8) when rom_out(13) = '1'
