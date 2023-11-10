@@ -6,8 +6,10 @@ entity control_unit is
     port (
         clk : in std_logic;
         opcode : in unsigned(7 downto 0);
+        flags: in unsigned(7 downto 0);
         oper: in unsigned(5 downto 0);
-        pc_clock, rom_clock, reg_bank_clock, jump, alu_src, write_en : out std_logic;
+        pc_clock, rom_clock, reg_bank_clock: out std_logic;
+        jump, alu_src, write_en, flags_wr: out std_logic;
         write_ad, reg_a_ad, reg_b_ad : out unsigned(4 downto 0);
         alu_op : out unsigned(2 downto 0)
     );
@@ -31,73 +33,105 @@ begin
     process(opcode, oper)
     begin
         case opcode is
+            -- ADC zpg
             when x"65" =>
                 jump <= '0';
                 alu_src <= '0';
                 write_en <= '1';
+                flags_wr <= '1';
                 write_ad <= "00001";
                 reg_a_ad <= "00001";
                 reg_b_ad <= oper(4 downto 0);
                 alu_op <= "000";
 
+            -- ADC imm
             when x"69" =>
                 jump <= '0';
                 alu_src <= '1';
                 write_en <= '1';
+                flags_wr <= '1';
                 write_ad <= "00001";
                 reg_a_ad <= "00001";
                 reg_b_ad <= oper(4 downto 0);
                 alu_op <= "000";
-
+            
+            -- SBC imm
             when x"E9" =>
                 jump <= '0';
                 alu_src <= '1';
                 write_en <= '1';
+                flags_wr <= '1';
                 write_ad <= "00001";
                 reg_a_ad <= "00001";
                 reg_b_ad <= oper(4 downto 0);
                 alu_op <= "001";
-
+            
+            -- STA zpg
             when x"85" =>
                 jump <= '0';
                 alu_src <= '0';
                 write_en <= '1';
+                flags_wr <= '0';
                 write_ad <= oper(4 downto 0);
                 reg_a_ad <= "00001";
                 reg_b_ad <= "00000";
                 alu_op <= "000";
-
+            
+            -- LDA imm
             when x"A9" =>
                 jump <= '0';
                 alu_src <= '1';
                 write_en <= '1';
+                flags_wr <= '0';
                 write_ad <= "00001";
                 reg_a_ad <= "00000";
                 reg_b_ad <= oper(4 downto 0);
                 alu_op <= "000";
-            
+           
+            -- LDA zpg
             when x"A5" =>
                 jump <= '0';
                 alu_src <= '0';
                 write_en <= '1';
+                flags_wr <= '0';
                 write_ad <= "00001";
                 reg_a_ad <= "00000";
                 reg_b_ad <= oper(4 downto 0);
                 alu_op <= "000";
             
-            -- Jump
+            -- Jump abs
             when x"4C" =>
                 jump <= '1';
                 alu_src <= '0';
                 write_en <= '0';
+                flags_wr <= '0';
                 write_ad <= "00001";
                 reg_a_ad <= "00000";
                 reg_b_ad <= oper(4 downto 0);
                 alu_op <= "000";
             
-            -- BEQ
+            -- BEQ (Branch on equals)
+            -- flag seq: neg, ovf, zero, carry
             when x"F0" =>
-                
+                jump <= flags(2);
+                alu_src <= '0';
+                write_en <= '0';
+                flags_wr <= '0';
+                write_ad <= "00001";
+                reg_a_ad <= "00000";
+                reg_b_ad <= oper(4 downto 0);
+                alu_op <= "000";
+           
+            -- BCS (Branch on carry set)
+            when x"B0" =>
+                jump <= flags(3);
+                alu_src <= '0';
+                write_en <= '0';
+                flags_wr <= '0';
+                write_ad <= "00001";
+                reg_a_ad <= "00000";
+                reg_b_ad <= oper(4 downto 0);
+                alu_op <= "000";
             
 
             when others =>
