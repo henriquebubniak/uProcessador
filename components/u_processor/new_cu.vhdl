@@ -70,5 +70,27 @@ begin
                 "00000" when opcode = x"A5" else
                 "00000";
 
+    reg_b_ad <= oper(4 downto 0) when opcode = x"65" else
+                oper(4 downto 0) when opcode = x"69" else
+                oper(4 downto 0) when opcode = x"E9" else
+                oper(4 downto 0) when opcode = x"A9" else
+                oper(4 downto 0) when opcode = x"A5" else
+                "00000" when opcode = x"85" else
+                "00000";
+
+    alu_op <= "001" when opcode = x"E9" else
+              "000" when opcode = x"65" else
+              "000" when opcode = x"69" else
+              "000" when opcode = x"85" else
+              "000" when opcode = x"A9" else
+              "000" when opcode = x"A5" else
+              "000";
+    
+    pc_src <= "01" when opcode = x"4C" else
+              "10" when opcode = x"F0" else
+              "10" when opcode = x"30" else
+              "10" when opcode = x"B0" else
+              "00";
+
 
 end a_control_unit;
