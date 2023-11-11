@@ -26,14 +26,11 @@ architecture a_u_processor of u_processor is
     end component;
 
     
-    --component control_unit is
-    component new_cu is
+    component control_unit is
         port (
-            --clk : in std_logic;
             opcode : in unsigned(7 downto 0);
             flags: in unsigned(7 downto 0);
             oper: in unsigned(5 downto 0);
-            --pc_clock, rom_clock, reg_bank_clock: out std_logic;
             jump, alu_src, write_en : out std_logic;
             flags_wr: out std_logic;
             pc_src: out unsigned(1 downto 0);
@@ -105,15 +102,11 @@ begin
             output => counter_state
         );
 
-    control_unit_inst : new_cu
+    control_unit_inst : control_unit
         port map (
-            --clk => clk,
             opcode => rom_out(7 downto 0),
             flags => flags_out,
             oper => rom_out(13 downto 8),
-            --pc_clock => pc_clock,
-            --rom_clock => rom_clock,
-            --reg_bank_clock => reg_bank_clock,
             jump => jump,
             alu_src => alu_src,
             write_en => write_en,
