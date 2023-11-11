@@ -8,7 +8,7 @@ end u_processor_tb;
 architecture a_u_processor_tb of u_processor_tb is
 
     signal clk, rst : std_logic := '0';
-    constant period_time : time := 100 ns;
+    constant period_time : time := 10 ns;
     signal finished : std_logic := '0';
 
     begin
@@ -27,7 +27,7 @@ architecture a_u_processor_tb of u_processor_tb is
 
         sim_time_proc: process
         begin
-            wait for 15 us;         
+            wait for 30 us;         
             finished <= '1';
             wait;
         end process sim_time_proc;
