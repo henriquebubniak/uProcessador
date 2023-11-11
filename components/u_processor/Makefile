@@ -25,15 +25,12 @@ u_processor_tb: u_processor
 	ghdl -e u_processor_tb
 	ghdl -r u_processor_tb --wave=u_processor_tb.ghw
 
+
+
+files = $(shell find . -type f -name "*.vhdl" ! -name "u_processor*")
 all:
-	ghdl -a control_unit.vhdl 
-	ghdl -a rom.vhdl 
-	ghdl -a program_counter.vhdl 
-	ghdl -a register_bank.vhdl 
-	ghdl -a alu.vhdl
-	ghdl -a flag_reg.vhdl
-	ghdl -a new_cu.vhdl
-	ghdl -a counter.vhdl
+    
+	ghdl -a ${files}
 	ghdl -a u_processor.vhdl
 	ghdl -a u_processor_tb.vhdl
 	ghdl -e u_processor_tb

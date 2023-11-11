@@ -2,3 +2,5 @@
 *.cf
 *.ghw
 .DS_Store
+.scripts
+.scrpits

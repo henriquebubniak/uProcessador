@@ -14,7 +14,7 @@ entity control_unit is
         write_ad, reg_a_ad, reg_b_ad : out unsigned(4 downto 0);
         alu_op : out unsigned(2 downto 0)
     );
-end new_cu;
+end control_unit;
 
 architecture a_control_unit of control_unit is
 begin
