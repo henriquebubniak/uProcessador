@@ -2,9 +2,9 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity control_unit is
+entity new_cu is
     port (
-        clk : in std_logic;
+        --clk : in std_logic;
         opcode : in unsigned(7 downto 0);
         flags: in unsigned(7 downto 0);
         oper: in unsigned(5 downto 0);
@@ -14,9 +14,9 @@ entity control_unit is
         write_ad, reg_a_ad, reg_b_ad : out unsigned(4 downto 0);
         alu_op : out unsigned(2 downto 0)
     );
-end control_unit;
+end new_cu;
 
-architecture a_control_unit of control_unit is
+architecture a_control_unit of new_cu is
 begin
     
     jump <= '1' when opcode = x"4C" else -- Jump
@@ -31,48 +31,47 @@ begin
                '1' when opcode = x"A9" else
                '0';
 
-    write_en <= '1' when opcode = x"65" else
-                '1' when opcode = x"85" else
-                '1' when opcode = x"A5" else
-                '1' when opcode = x"69" else
-                '1' when opcode = x"E9" else
-                '1' when opcode = x"A9" else
+    write_en <= '1' when opcode = x"65" else -- ADC zpg
+                '1' when opcode = x"85" else -- STA zpg
+                '1' when opcode = x"A5" else -- LDA zpg
+                '1' when opcode = x"69" else -- ADC imm
+                '1' when opcode = x"E9" else -- SBC imm
+                '1' when opcode = x"A9" else -- LDA imm
                 '0';
     
-    flags_wr <= '1' when opcode = x"65" else
-                '1' when opcode = x"69" else
-                '1' when opcode = x"E9" else
+    flags_wr <= '1' when opcode = x"65" else -- ADC zpg
+                '1' when opcode = x"69" else -- ADC imm
+                '1' when opcode = x"E9" else -- SBC imm
                 '0';
 
-    write_ad <= "00001" when opcode = x"65" else
-                "00001" when opcode = x"69" else
-                "00001" when opcode = x"E9" else
-                "00001" when opcode = x"A9" else
-                "00001" when opcode = x"A5" else
-                oper(4 downto 0) when opcode = x"85" else
+    write_ad <= "00001" when opcode = x"65" else -- ADC zpg
+                "00001" when opcode = x"69" else -- ADC imm
+                "00001" when opcode = x"E9" else -- SBC imm
+                "00001" when opcode = x"A9" else -- LDA imm
+                "00001" when opcode = x"A5" else -- LDA zpg
+                oper(4 downto 0) when opcode = x"85" else -- STA zpg
                 "00000";
 
-    reg_a_ad <= "00001" when opcode = x"65" else
-                "00001" when opcode = x"69" else
-                "00001" when opcode = x"E9" else
-                "00001" when opcode = x"85" else
-                "00001" when opcode = x"A9" else
+    reg_a_ad <= "00001" when opcode = x"65" else -- ADC zpg
+                "00001" when opcode = x"69" else -- ADC imm
+                "00001" when opcode = x"E9" else -- SBC imm
+                "00001" when opcode = x"85" else -- STA zpg
                 "00000";
 
-    reg_b_ad <= oper(4 downto 0) when opcode = x"65" else
-                oper(4 downto 0) when opcode = x"69" else
-                oper(4 downto 0) when opcode = x"E9" else
-                oper(4 downto 0) when opcode = x"A9" else
-                oper(4 downto 0) when opcode = x"A5" else
+    reg_b_ad <= oper(4 downto 0) when opcode = x"65" else -- ADC zpg
+                oper(4 downto 0) when opcode = x"69" else -- ADC imm
+                oper(4 downto 0) when opcode = x"E9" else -- SBC imm
+                oper(4 downto 0) when opcode = x"A9" else -- LDA imm
+                oper(4 downto 0) when opcode = x"A5" else -- LDA zpg
                 "00000";
 
-    alu_op <= "001" when opcode = x"E9" else
+    alu_op <= "001" when opcode = x"E9" else -- SBC imm
               "000";
     
-    pc_src <= "01" when opcode = x"4C" else
-              "10" when opcode = x"F0" else
-              "10" when opcode = x"30" else
-              "10" when opcode = x"B0" else
+    pc_src <= "01" when opcode = x"4C" else -- JMP
+              "10" when opcode = x"F0" else -- BEQ
+              "10" when opcode = x"30" else -- BMI
+              "10" when opcode = x"B0" else -- BCS
               "00";
 
 

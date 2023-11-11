@@ -25,13 +25,16 @@ architecture a_u_processor of u_processor is
         );
     end component;
 
-    component control_unit is
+    
+    --component control_unit is
+    component new_cu is
         port (
-            clk : in std_logic;
+            --clk : in std_logic;
             opcode : in unsigned(7 downto 0);
             flags: in unsigned(7 downto 0);
             oper: in unsigned(5 downto 0);
-            pc_clock, rom_clock, reg_bank_clock, jump, alu_src, write_en : out std_logic;
+            --pc_clock, rom_clock, reg_bank_clock: out std_logic;
+            jump, alu_src, write_en : out std_logic;
             flags_wr: out std_logic;
             pc_src: out unsigned(1 downto 0);
             write_ad, reg_a_ad, reg_b_ad : out unsigned(4 downto 0);
@@ -64,6 +67,13 @@ architecture a_u_processor of u_processor is
             n, v, z, c:out std_logic
         );
     end component alu;
+
+    component counter is
+        port(
+            clk, rst: in std_logic;
+            output: out unsigned(1 downto 0)
+        );
+    end component counter;
     
     signal rom_out : unsigned(13 downto 0) := (others => '0');
     signal pc_clock, rom_clock, reg_bank_clock, jump, alu_src, write_en, zero, ovf, gt, st, eq : std_logic := '0'; 
@@ -72,7 +82,7 @@ architecture a_u_processor of u_processor is
     signal alu_op : unsigned(2 downto 0) := (others => '0');
     signal write_ad, reg_a_ad, reg_b_ad : unsigned(4 downto 0) := (others => '0');
 
-    signal flags_clr, flags_wr: std_logic := '0';
+    signal flags_wr: std_logic := '0';
     signal flags_in, flags_out: unsigned(7 downto 0) := x"00";
 
     signal n,v,z,c: std_logic := '0';
@@ -82,16 +92,28 @@ architecture a_u_processor of u_processor is
     signal branch_address: unsigned(6 downto 0);
     signal pc_src: unsigned(1 downto 0) := b"00";
 
+    signal counter_state: unsigned(1 downto 0) := "00";
+
 begin
-    control_unit_inst : control_unit
-        port map (
+    pc_clock <= '1' when counter_state = "00" else '0';
+    rom_clock <= '1' when counter_state = "01" else '0';
+    reg_bank_clock <= '1' when counter_state = "11" else '0';
+    counter_inst: counter
+        port map(
             clk => clk,
+            rst => rst,
+            output => counter_state
+        );
+
+    control_unit_inst : new_cu
+        port map (
+            --clk => clk,
             opcode => rom_out(7 downto 0),
             flags => flags_out,
             oper => rom_out(13 downto 8),
-            pc_clock => pc_clock,
-            rom_clock => rom_clock,
-            reg_bank_clock => reg_bank_clock,
+            --pc_clock => pc_clock,
+            --rom_clock => rom_clock,
+            --reg_bank_clock => reg_bank_clock,
             jump => jump,
             alu_src => alu_src,
             write_en => write_en,
@@ -125,7 +147,7 @@ begin
             input => flags_in,
             output => flags_out,
             clk => reg_bank_clock,
-            clear => flags_clr,
+            clear => rst,
             wr_en => flags_wr
         );
 
