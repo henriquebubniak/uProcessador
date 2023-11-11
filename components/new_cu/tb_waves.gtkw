@@ -1,0 +1,41 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Sat Nov 11 15:24:51 2023
+[*]
+[dumpfile] "/home/henrique/Documents/Faculdade/2023_2/arq_comp/uProcessador/components/new_cu/new_cu_tb.ghw"
+[dumpfile_mtime] "Sat Nov 11 15:20:02 2023"
+[dumpfile_size] 1462
+[savefile] "/home/henrique/Documents/Faculdade/2023_2/arq_comp/uProcessador/components/new_cu/tb_waves.gtkw"
+[timestart] 0
+[size] 1920 1080
+[pos] -27 -24
+*-25.267996 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.new_cu_tb.
+[sst_width] 273
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 324
+@28
+[color] 5
+#{top.new_cu_tb.flags[7:0]} top.new_cu_tb.flags[7] top.new_cu_tb.flags[6] top.new_cu_tb.flags[5] top.new_cu_tb.flags[4] top.new_cu_tb.flags[3] top.new_cu_tb.flags[2] top.new_cu_tb.flags[1] top.new_cu_tb.flags[0]
+@22
+[color] 5
+#{top.new_cu_tb.oper[5:0]} top.new_cu_tb.oper[5] top.new_cu_tb.oper[4] top.new_cu_tb.oper[3] top.new_cu_tb.oper[2] top.new_cu_tb.oper[1] top.new_cu_tb.oper[0]
+@23
+[color] 5
+#{top.new_cu_tb.opcode[7:0]} top.new_cu_tb.opcode[7] top.new_cu_tb.opcode[6] top.new_cu_tb.opcode[5] top.new_cu_tb.opcode[4] top.new_cu_tb.opcode[3] top.new_cu_tb.opcode[2] top.new_cu_tb.opcode[1] top.new_cu_tb.opcode[0]
+@28
+top.new_cu_tb.control_unit_inst.jump
+top.new_cu_tb.control_unit_inst.alu_src
+top.new_cu_tb.control_unit_inst.write_en
+top.new_cu_tb.control_unit_inst.flags_wr
+@22
+#{top.new_cu_tb.control_unit_inst.write_ad[4:0]} top.new_cu_tb.control_unit_inst.write_ad[4] top.new_cu_tb.control_unit_inst.write_ad[3] top.new_cu_tb.control_unit_inst.write_ad[2] top.new_cu_tb.control_unit_inst.write_ad[1] top.new_cu_tb.control_unit_inst.write_ad[0]
+#{top.new_cu_tb.control_unit_inst.reg_a_ad[4:0]} top.new_cu_tb.control_unit_inst.reg_a_ad[4] top.new_cu_tb.control_unit_inst.reg_a_ad[3] top.new_cu_tb.control_unit_inst.reg_a_ad[2] top.new_cu_tb.control_unit_inst.reg_a_ad[1] top.new_cu_tb.control_unit_inst.reg_a_ad[0]
+#{top.new_cu_tb.control_unit_inst.reg_b_ad[4:0]} top.new_cu_tb.control_unit_inst.reg_b_ad[4] top.new_cu_tb.control_unit_inst.reg_b_ad[3] top.new_cu_tb.control_unit_inst.reg_b_ad[2] top.new_cu_tb.control_unit_inst.reg_b_ad[1] top.new_cu_tb.control_unit_inst.reg_b_ad[0]
+@28
+#{top.new_cu_tb.control_unit_inst.alu_op[2:0]} top.new_cu_tb.control_unit_inst.alu_op[2] top.new_cu_tb.control_unit_inst.alu_op[1] top.new_cu_tb.control_unit_inst.alu_op[0]
+#{top.new_cu_tb.control_unit_inst.pc_src[1:0]} top.new_cu_tb.control_unit_inst.pc_src[1] top.new_cu_tb.control_unit_inst.pc_src[0]
+[pattern_trace] 1
+[pattern_trace] 0
