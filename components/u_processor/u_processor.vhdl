@@ -43,8 +43,8 @@ architecture a_u_processor of u_processor is
         port (
             reg_a_ad, reg_b_ad, write_ad : in unsigned(4 downto 0);
             write_en, rst, clk : in std_logic;
-            write_data : in unsigned(15 downto 0);
-            reg_a, reg_b : out unsigned(15 downto 0)
+            write_data : in unsigned(7 downto 0);
+            reg_a, reg_b : out unsigned(7 downto 0)
         );
     end component register_bank;
 
@@ -58,9 +58,9 @@ architecture a_u_processor of u_processor is
 
     component alu is
         port (
-            op0, op1: in unsigned(15 downto 0);
+            op0, op1: in unsigned(7 downto 0);
             alu_op: in unsigned(2 downto 0);
-            result: out unsigned(15 downto 0);
+            result: out unsigned(7 downto 0);
             n, v, z, c:out std_logic
         );
     end component alu;
@@ -75,7 +75,7 @@ architecture a_u_processor of u_processor is
     signal rom_out : unsigned(13 downto 0) := (others => '0');
     signal pc_clock, rom_clock, reg_bank_clock, jump, alu_src, write_en, zero, ovf, gt, st, eq : std_logic := '0'; 
     signal pc_plus_one, jump_address, pc_address_mux, pc_out : unsigned(6 downto 0) := (others => '0');
-    signal reg_a_out, reg_b_out, alu_src_mux, alu_out : unsigned(15 downto 0) := (others => '0');
+    signal reg_a_out, reg_b_out, alu_src_mux, alu_out : unsigned(7 downto 0) := (others => '0');
     signal alu_op : unsigned(2 downto 0) := (others => '0');
     signal write_ad, reg_a_ad, reg_b_ad : unsigned(4 downto 0) := (others => '0');
 
@@ -84,7 +84,7 @@ architecture a_u_processor of u_processor is
 
     signal n,v,z,c: std_logic := '0';
 
-    signal signal_extender: unsigned(15 downto 0) := x"0000";
+    signal signal_extender: unsigned(7 downto 0) := x"00";
 
     signal branch_address: unsigned(6 downto 0);
     signal pc_src: unsigned(1 downto 0) := b"00";
@@ -177,8 +177,8 @@ begin
                       branch_address when (pc_src = b"10" and jump = '1')
                       else pc_plus_one;
     
-    signal_extender <= b"11_1111_1111" & rom_out(13 downto 8) when rom_out(13) = '1'
-                       else b"00_0000_0000" & rom_out(13 downto 8);
+    signal_extender <= b"11" & rom_out(13 downto 8) when rom_out(13) = '1'
+                       else b"00" & rom_out(13 downto 8);
 
     alu_src_mux <= signal_extender when alu_src = '1' else reg_b_out;
 
