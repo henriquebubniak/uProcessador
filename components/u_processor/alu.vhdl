@@ -26,10 +26,12 @@ architecture alu_arch of alu is
 
     signal mux_out: unsigned(7 downto 0) := x"00";
 
+    signal sum_v, sub_v: std_logic := '0';
+
 begin
     -- sum and sub
     sum_r <= ('0'& op0) + ('0'& op1);
-    sub_r <= ('0'& op0) - ('0'& op1);
+    sub_r <= op0 - op1;
 
     -- logical
     and_r <= op0 and op1;
@@ -45,10 +47,24 @@ begin
                x"00";
 
     --flags
+    sum_v <= (sum_r(7) and not op0(7) and not op1(7)) or
+             (not sum_r(7) and op0(7) and op1(7));
+    
+    sub_v <= '1' when to_integer(sub_r) > 127 else
+             '1' when to_integer(sub_r) < -127 else
+             '0';
+
     z <= '1' when mux_out = 0 else '0';
-    v <= '1' when sum_r(8) = '1' else '0';
-    c <= '1' when sum_r(8) = '1' else '0';
-    n <= '1' when mux_out(7) = '1' else '0';
+
+    v <= sum_v when alu_op = "000" else
+         sub_v when alu_op = "001" else
+         '0';
+
+    c <= sum_r(8) when alu_op = "000" else 
+         not sub_r(7) when alu_op = "001" else
+         '0';
+
+    n <= mux_out(7);
 
     result <= mux_out;
 
