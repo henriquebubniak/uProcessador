@@ -22,7 +22,6 @@ Os opcodes são formados pelos 8 bits menos significativos. Os 6 bits mais signi
 | lda zpg   | A5     | adr      | A = mem[adr]  | ok
 | jmp       | 4C     | adr      | PC = adr      | ok
 
+## Falta
 
-
-
-
+Criar variante zpg da sbc, criar variante absolute da sta e lda. Criar as instruções de aritmética lógica.
