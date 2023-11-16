@@ -60,6 +60,7 @@ architecture a_u_processor of u_processor is
         port (
             op0, op1: in unsigned(7 downto 0);
             alu_op: in unsigned(2 downto 0);
+            carry : in std_logic;
             result: out unsigned(7 downto 0);
             n, v, z, c:out std_logic
         );
@@ -162,6 +163,7 @@ begin
             op0 => reg_a_out,
             op1 => alu_src_mux,
             alu_op => alu_op,
+            carry => flags_out(4),
             result => alu_out,
             n => n,
             v => v,
