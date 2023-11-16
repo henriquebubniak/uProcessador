@@ -6,7 +6,6 @@ entity alu is
     port(
         op0, op1: in unsigned(7 downto 0);
         alu_op: in unsigned(2 downto 0);
-        c_in: in std_logic;
         result: out unsigned(7 downto 0);
         n,v,z,c: out std_logic
     );
@@ -20,7 +19,7 @@ architecture alu_arch of alu is
     
     --<operation>_r(esult)
     signal sum_r: unsigned(8 downto 0) := (others => '0');
-    signal sub_r: unsigned(8 downto 0) := (others => '0');
+    signal sub_r: unsigned(7 downto 0) := (others => '0');
     signal and_r: unsigned(7 downto 0) := x"00";
     signal or_r: unsigned(7 downto 0) := x"00";
     signal xor_r: unsigned(7 downto 0) := x"00";
@@ -31,8 +30,8 @@ architecture alu_arch of alu is
 
 begin
     -- sum and sub
-    sum_r <= ('0'& op0) + ('0'& op1) + (b"0000_0000" & c_in);
-    sub_r <= op0 - op1 -  (b"0000_000" & not c_in);
+    sum_r <= ('0'& op0) + ('0'& op1);
+    sub_r <= op0 - op1;
 
     -- logical
     and_r <= op0 and op1;
