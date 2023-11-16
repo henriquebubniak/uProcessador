@@ -6,6 +6,7 @@ entity alu is
     port(
         op0, op1: in unsigned(7 downto 0);
         alu_op: in unsigned(2 downto 0);
+        carry: in std_logic;
         result: out unsigned(7 downto 0);
         n,v,z,c: out std_logic
     );
@@ -30,8 +31,8 @@ architecture alu_arch of alu is
 
 begin
     -- sum and sub
-    sum_r <= ('0'& op0) + ('0'& op1);
-    sub_r <= op0 - op1;
+    sum_r <= ('0'& op0) + ('0'& op1) + (b"0000_0000" & carry);
+    sub_r <= op0 - op1 - (b"0000_000" & not carry);
 
     -- logical
     and_r <= op0 and op1;
