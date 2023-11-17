@@ -12,7 +12,8 @@ entity control_unit is
         jump, alu_src, write_en, flags_wr: out std_logic;
         pc_src: out unsigned(1 downto 0);
         write_ad, reg_a_ad, reg_b_ad : out unsigned(4 downto 0);
-        alu_op : out unsigned(2 downto 0)
+        alu_op : out unsigned(2 downto 0);
+        flag_mask: out unsigned(7 downto 0)
     );
 end control_unit;
 
@@ -73,6 +74,15 @@ begin
               "10" when opcode = x"30" else -- BMI
               "10" when opcode = x"B0" else -- BCS
               "00";
+                
+                -- n, v, z, c, 0000
+    flag_mask <= b"1111_0000" when opcode = x"65" else -- ADC zpg
+                 b"1111_0000" when opcode = x"69" else -- ADC imm
+                 b"1111_0000" when opcode = x"E9" else -- SBC imm
+                 b"1010_0000" when opcode = x"A9" else -- LDA imm
+                 b"1010_0000" when opcode = x"A5" else -- LDA zpg
+                 b"0000_0000";
+
 
 
 end a_control_unit;
