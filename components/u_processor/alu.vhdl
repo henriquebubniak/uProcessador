@@ -33,6 +33,9 @@ begin
     -- sum and sub
     sum_r <= ('0'& op0) + ('0'& op1) + (b"0000_0000" & carry);
     sub_r <= op0 - op1 - (b"0000_000" & not carry);
+    
+    --sum_r <= ('0'& op0) + ('0'& op1);
+    --sub_r <= op0 - op1;
 
     -- logical
     and_r <= op0 and op1;
