@@ -43,6 +43,8 @@ begin
     flags_wr <= '1' when opcode = x"65" else -- ADC zpg
                 '1' when opcode = x"69" else -- ADC imm
                 '1' when opcode = x"E9" else -- SBC imm
+                '1' when opcode = x"A9" else -- LDA imm
+                '1' when opcode = x"A5" else -- LDA zpg
                 '0';
 
     write_ad <= "00001" when opcode = x"65" else -- ADC zpg

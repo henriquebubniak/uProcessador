@@ -35,7 +35,8 @@ architecture a_u_processor of u_processor is
             flags_wr: out std_logic;
             pc_src: out unsigned(1 downto 0);
             write_ad, reg_a_ad, reg_b_ad : out unsigned(4 downto 0);
-            alu_op : out unsigned(2 downto 0)
+            alu_op : out unsigned(2 downto 0);
+            flag_mask: out unsigned(7 downto 0)
         );
     end component;
     
@@ -91,6 +92,9 @@ architecture a_u_processor of u_processor is
     signal pc_src: unsigned(1 downto 0) := b"00";
 
     signal counter_state: unsigned(1 downto 0) := "00";
+    
+    signal flag_mask: unsigned(7 downto 0) := x"00";
+    signal flag_filter_out: unsigned(7 downto 0) := x"00";
 
 begin
     pc_clock <= '1' when counter_state = "00" else '0';
@@ -116,7 +120,8 @@ begin
             pc_src => pc_src,
             write_ad => write_ad,
             reg_a_ad => reg_a_ad,
-            reg_b_ad => reg_b_ad
+            reg_b_ad => reg_b_ad,
+            flag_mask => flag_mask
         );
 
     rom_inst : rom
@@ -136,9 +141,10 @@ begin
         );
    
     flags_in <= (n & v & z & c & "0000");
+    flag_filter_out <= (flags_in and flag_mask) or (flags_out and not(flag_mask));
     flag_reg_inst: flag_reg
         port map(
-            input => flags_in,
+            input => flag_filter_out,
             output => flags_out,
             clk => reg_bank_clock,
             clear => rst,
@@ -183,5 +189,6 @@ begin
                        else b"00" & rom_out(13 downto 8);
 
     alu_src_mux <= signal_extender when alu_src = '1' else reg_b_out;
+    
 
 end a_u_processor;
