@@ -86,6 +86,9 @@ begin
                 "00000";
 
     alu_op <= "001" when opcode = x"E9" else -- SBC imm
+              "011" when opcode = x"A9" else -- LDA imm
+              "011" when opcode = x"A5" else -- LDA zpg
+              "011" when opcode = x"85" else -- STA zpg
               "000";
     
     pc_src <= "01" when opcode = x"4C" else -- JMP

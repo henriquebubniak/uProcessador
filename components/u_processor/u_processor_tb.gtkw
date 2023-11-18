@@ -1,21 +1,22 @@
 [*]
 [*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
-[*] Fri Nov 17 19:02:28 2023
+[*] Sat Nov 18 01:35:25 2023
 [*]
 [dumpfile] "/home/henrique/Documents/Faculdade/2023_2/arq_comp/uProcessador/components/u_processor/u_processor_tb.ghw"
-[dumpfile_mtime] "Fri Nov 17 18:57:56 2023"
-[dumpfile_size] 162531
+[dumpfile_mtime] "Sat Nov 18 01:27:16 2023"
+[dumpfile_size] 170982
 [savefile] "/home/henrique/Documents/Faculdade/2023_2/arq_comp/uProcessador/components/u_processor/u_processor_tb.gtkw"
-[timestart] 650370000
+[timestart] 11118000000
 [size] 1920 1001
 [pos] -27 -24
-*-22.712391 657000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-25.712391 11315000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] top.
 [treeopen] top.u_processor_tb.
 [treeopen] top.u_processor_tb.u_processor_inst.
 [treeopen] top.u_processor_tb.u_processor_inst.control_unit_inst.
 [treeopen] top.u_processor_tb.u_processor_inst.flag_reg_inst.
 [treeopen] top.u_processor_tb.u_processor_inst.register_bank_inst.
+[treeopen] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file.
 [sst_width] 273
 [signals_width] 190
 [sst_expanded] 1
@@ -45,16 +46,33 @@ top.u_processor_tb.u_processor_inst.register_bank_inst.write_en
 top.u_processor_tb.u_processor_inst.control_unit_inst.jump
 @22
 #{top.u_processor_tb.u_processor_inst.flag_reg_inst.input[7:0]} top.u_processor_tb.u_processor_inst.flag_reg_inst.input[7] top.u_processor_tb.u_processor_inst.flag_reg_inst.input[6] top.u_processor_tb.u_processor_inst.flag_reg_inst.input[5] top.u_processor_tb.u_processor_inst.flag_reg_inst.input[4] top.u_processor_tb.u_processor_inst.flag_reg_inst.input[3] top.u_processor_tb.u_processor_inst.flag_reg_inst.input[2] top.u_processor_tb.u_processor_inst.flag_reg_inst.input[1] top.u_processor_tb.u_processor_inst.flag_reg_inst.input[0]
+@29
+[color] 1
+top.u_processor_tb.u_processor_inst.alu_inst.carry
+@22
 #{top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][15:0]} top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][7] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][6] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][5] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][4] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][3] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][2] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][1] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][0]
 @24
 #{top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[10][15:0]} top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[10][7] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[10][6] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[10][5] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[10][4] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[10][3] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[10][2] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[10][1] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[10][0]
+@c00022
 #{top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][15:0]} top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][7] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][6] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][5] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][4] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][3] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][2] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][1] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][0]
+@28
+top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][7]
+top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][6]
+top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][5]
+top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][4]
+top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][3]
+top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][2]
+top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][1]
+top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[11][0]
+@1401202
+-group_end
+@22
+[color] 5
+#{top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[12][7:0]} top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[12][7] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[12][6] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[12][5] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[12][4] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[12][3] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[12][2] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[12][1] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[12][0]
 @28
 top.u_processor_tb.u_processor_inst.control_unit_inst.flags_wr
 #{top.u_processor_tb.u_processor_inst.flags_in[7:0]} top.u_processor_tb.u_processor_inst.flags_in[7] top.u_processor_tb.u_processor_inst.flags_in[6] top.u_processor_tb.u_processor_inst.flags_in[5] top.u_processor_tb.u_processor_inst.flags_in[4] top.u_processor_tb.u_processor_inst.flags_in[3] top.u_processor_tb.u_processor_inst.flags_in[2] top.u_processor_tb.u_processor_inst.flags_in[1] top.u_processor_tb.u_processor_inst.flags_in[0]
-@29
 #{top.u_processor_tb.u_processor_inst.flags_out[7:0]} top.u_processor_tb.u_processor_inst.flags_out[7] top.u_processor_tb.u_processor_inst.flags_out[6] top.u_processor_tb.u_processor_inst.flags_out[5] top.u_processor_tb.u_processor_inst.flags_out[4] top.u_processor_tb.u_processor_inst.flags_out[3] top.u_processor_tb.u_processor_inst.flags_out[2] top.u_processor_tb.u_processor_inst.flags_out[1] top.u_processor_tb.u_processor_inst.flags_out[0]
-@28
 #{top.u_processor_tb.u_processor_inst.control_unit_inst.flag_mask[7:0]} top.u_processor_tb.u_processor_inst.control_unit_inst.flag_mask[7] top.u_processor_tb.u_processor_inst.control_unit_inst.flag_mask[6] top.u_processor_tb.u_processor_inst.control_unit_inst.flag_mask[5] top.u_processor_tb.u_processor_inst.control_unit_inst.flag_mask[4] top.u_processor_tb.u_processor_inst.control_unit_inst.flag_mask[3] top.u_processor_tb.u_processor_inst.control_unit_inst.flag_mask[2] top.u_processor_tb.u_processor_inst.control_unit_inst.flag_mask[1] top.u_processor_tb.u_processor_inst.control_unit_inst.flag_mask[0]
 #{top.u_processor_tb.u_processor_inst.flag_filter_out[7:0]} top.u_processor_tb.u_processor_inst.flag_filter_out[7] top.u_processor_tb.u_processor_inst.flag_filter_out[6] top.u_processor_tb.u_processor_inst.flag_filter_out[5] top.u_processor_tb.u_processor_inst.flag_filter_out[4] top.u_processor_tb.u_processor_inst.flag_filter_out[3] top.u_processor_tb.u_processor_inst.flag_filter_out[2] top.u_processor_tb.u_processor_inst.flag_filter_out[1] top.u_processor_tb.u_processor_inst.flag_filter_out[0]
 #{top.u_processor_tb.u_processor_inst.flag_reg_inst.output[7:0]} top.u_processor_tb.u_processor_inst.flag_reg_inst.output[7] top.u_processor_tb.u_processor_inst.flag_reg_inst.output[6] top.u_processor_tb.u_processor_inst.flag_reg_inst.output[5] top.u_processor_tb.u_processor_inst.flag_reg_inst.output[4] top.u_processor_tb.u_processor_inst.flag_reg_inst.output[3] top.u_processor_tb.u_processor_inst.flag_reg_inst.output[2] top.u_processor_tb.u_processor_inst.flag_reg_inst.output[1] top.u_processor_tb.u_processor_inst.flag_reg_inst.output[0]
