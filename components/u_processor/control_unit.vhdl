@@ -18,11 +18,11 @@ end control_unit;
 
 --  ADC imm, zpg
 --  SBC imm, zpg
---  LDA imm, zpg
+--  LDA imm, zpg, (abs,X)
 --  CLC impl
 --  CLV impl
 --  SEC impl
---  STA zpg
+--  STA zpg, (abs,X)
 --  JMP abs
 --  BMI rel
 --  BEQ rel
@@ -41,6 +41,7 @@ begin
                '1' when opcode = x"E9" else -- SBC imm
                '1' when opcode = x"A9" else -- LDA imm
                '1' when opcode = x"9D" else -- STA abs,X
+               '1' when opcode = x"BD" else -- LDA abs,X
                '0';
 
     write_en <= '1' when opcode = x"65" else -- ADC zpg
@@ -49,6 +50,7 @@ begin
                 '1' when opcode = x"69" else -- ADC imm
                 '1' when opcode = x"E9" else -- SBC imm
                 '1' when opcode = x"A9" else -- LDA imm
+                '1' when opcode = x"BD" else -- LDA abs,X
                 '0';
     
     flags_wr <= '1' when opcode = x"65" else -- ADC zpg
@@ -56,6 +58,7 @@ begin
                 '1' when opcode = x"E9" else -- SBC imm
                 '1' when opcode = x"A9" else -- LDA imm
                 '1' when opcode = x"A5" else -- LDA zpg
+                '1' when opcode = x"BD" else -- LDA abs,X
                 '1' when opcode = x"18" else -- CLC impl
                 '1' when opcode = x"38" else -- SEC impl
                 '1' when opcode = x"B8" else -- CLV impl
@@ -66,6 +69,7 @@ begin
                 "00001" when opcode = x"E9" else -- SBC imm
                 "00001" when opcode = x"A9" else -- LDA imm
                 "00001" when opcode = x"A5" else -- LDA zpg
+                "00001" when opcode = x"BD" else -- LDA abs,X
                 oper(4 downto 0) when opcode = x"85" else -- STA zpg
                 "00000";
 
@@ -75,6 +79,7 @@ begin
                 "00001" when opcode = x"85" else -- STA zpg
                 "11111" when opcode = x"38" else -- SEC impl
                 "00010" when opcode = x"9D" else -- STA abs,X
+                "00010" when opcode = x"BD" else -- LDA abs,X
                 "00000";
 
     reg_b_ad <= oper(4 downto 0) when opcode = x"65" else -- ADC zpg
@@ -82,8 +87,8 @@ begin
                 oper(4 downto 0) when opcode = x"E9" else -- SBC imm
                 oper(4 downto 0) when opcode = x"A9" else -- LDA imm
                 oper(4 downto 0) when opcode = x"A5" else -- LDA zpg
-                "11111" when opcode = x"38" else         -- SEC impl
-                "00001" when opcode = x"9d" else         -- STA abs,X
+                "11111" when opcode = x"38" else          -- SEC impl
+                "00001" when opcode = x"9D" else          -- STA abs,X
                 "00000";
 
     alu_op <= "001" when opcode = x"E9" else -- SBC imm
@@ -104,6 +109,7 @@ begin
                  b"1111_0000" when opcode = x"E9" else -- SBC imm
                  b"1010_0000" when opcode = x"A9" else -- LDA imm
                  b"1010_0000" when opcode = x"A5" else -- LDA zpg
+                 b"1010_0000" when opcode = x"BD" else -- LDA abs,X
                  b"0001_0000" when opcode = x"18" else -- CLC impl
                  b"0001_0000" when opcode = x"38" else -- SEC impl
                  b"0100_0000" when opcode = x"B8" else -- CLV impl
