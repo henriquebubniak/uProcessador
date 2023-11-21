@@ -36,7 +36,8 @@ architecture a_u_processor of u_processor is
             pc_src: out unsigned(1 downto 0);
             write_ad, reg_a_ad, reg_b_ad : out unsigned(4 downto 0);
             alu_op : out unsigned(2 downto 0);
-            flag_mask: out unsigned(7 downto 0)
+            flag_mask: out unsigned(7 downto 0);
+            mem_wr, mem_to_reg: out std_logic
         );
     end component;
     
@@ -73,9 +74,18 @@ architecture a_u_processor of u_processor is
             output: out unsigned(1 downto 0)
         );
     end component counter;
+
+    component ram is
+        port(   
+            address: in unsigned(5 downto 0);
+            wr_data_in: in unsigned(7 downto 0);
+            mem_wr, clk: in std_logic;
+            r_data_out: out unsigned(7 downto 0)
+        );
+    end component ram;
     
     signal rom_out : unsigned(13 downto 0) := (others => '0');
-    signal pc_clock, rom_clock, reg_bank_clock, jump, alu_src, write_en, zero, ovf, gt, st, eq : std_logic := '0'; 
+    signal pc_clock, rom_clock, write_back, jump, alu_src, write_en, zero, ovf, gt, st, eq : std_logic := '0'; 
     signal pc_plus_one, jump_address, pc_address_mux, pc_out : unsigned(6 downto 0) := (others => '0');
     signal reg_a_out, reg_b_out, alu_src_mux, alu_out : unsigned(7 downto 0) := (others => '0');
     signal alu_op : unsigned(2 downto 0) := (others => '0');
@@ -96,10 +106,15 @@ architecture a_u_processor of u_processor is
     signal flag_mask: unsigned(7 downto 0) := x"00";
     signal flag_filter_out: unsigned(7 downto 0) := x"00";
 
+    signal mem_to_reg, mem_wr: std_logic := '0';
+    signal ram_data: unsigned(7 downto 0) := x"00";
+    signal reg_wr_mux: unsigned(7 downto 0) := x"00";
+
 begin
     pc_clock <= '1' when counter_state = "00" else '0';
     rom_clock <= '1' when counter_state = "01" else '0';
-    reg_bank_clock <= '1' when counter_state = "11" else '0';
+    write_back <= '1' when counter_state = "11" else '0';
+
     counter_inst: counter
         port map(
             clk => clk,
@@ -121,7 +136,9 @@ begin
             write_ad => write_ad,
             reg_a_ad => reg_a_ad,
             reg_b_ad => reg_b_ad,
-            flag_mask => flag_mask
+            flag_mask => flag_mask,
+            mem_wr => mem_wr,
+            mem_to_reg => mem_to_reg
         );
 
     rom_inst : rom
@@ -146,11 +163,12 @@ begin
         port map(
             input => flag_filter_out,
             output => flags_out,
-            clk => reg_bank_clock,
+            clk => write_back,
             clear => rst,
             wr_en => flags_wr
         );
-
+    
+    reg_wr_mux <= ram_data when mem_to_reg = '1' else alu_out;
     register_bank_inst : register_bank
         port map (
             reg_a_ad => reg_a_ad,
@@ -158,8 +176,8 @@ begin
             write_ad => write_ad,
             write_en => write_en,
             rst => rst,
-            clk => reg_bank_clock,
-            write_data => alu_out,
+            clk => write_back,
+            write_data => reg_wr_mux,
             reg_a => reg_a_out,
             reg_b => reg_b_out
         );
@@ -176,6 +194,16 @@ begin
             z => z,
             c => c
         );
+    
+    ram_inst: ram
+        port map(
+            address => alu_out(5 downto 0),
+            wr_data_in => reg_b_out,
+            mem_wr => mem_wr,
+            clk => write_back,
+            r_data_out => ram_data
+        );
+
     jump_address <= "0"&rom_out(13 downto 8);
     pc_plus_one <= pc_out + 1;
     branch_address <= pc_out + signal_extender(6 downto 0);

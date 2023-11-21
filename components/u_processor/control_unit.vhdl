@@ -12,7 +12,7 @@ entity control_unit is
         write_ad, reg_a_ad, reg_b_ad : out unsigned(4 downto 0);
         alu_op : out unsigned(2 downto 0);
         flag_mask: out unsigned(7 downto 0);
-        mem_wr, mem_to_reg: std_logic;
+        mem_wr, mem_to_reg: out std_logic
     );
 end control_unit;
 
