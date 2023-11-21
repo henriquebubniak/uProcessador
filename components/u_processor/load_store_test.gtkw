@@ -1,0 +1,41 @@
+[*]
+[*] GTKWave Analyzer v3.3.115 (w)1999-2023 BSI
+[*] Tue Nov 21 16:15:11 2023
+[*]
+[dumpfile] "/home/henrique/Documents/Faculdade/2023_2/arq_comp/uProcessador/components/u_processor/u_processor_tb.ghw"
+[dumpfile_mtime] "Tue Nov 21 15:44:50 2023"
+[dumpfile_size] 158309
+[savefile] "/home/henrique/Documents/Faculdade/2023_2/arq_comp/uProcessador/components/u_processor/load_store_test.gtkw"
+[timestart] 0
+[size] 1920 1001
+[pos] -1 -1
+*-25.896872 15325000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top.
+[treeopen] top.u_processor_tb.
+[treeopen] top.u_processor_tb.u_processor_inst.
+[treeopen] top.u_processor_tb.u_processor_inst.control_unit_inst.
+[treeopen] top.u_processor_tb.u_processor_inst.ram_inst.
+[treeopen] top.u_processor_tb.u_processor_inst.ram_inst.mem_inst.
+[treeopen] top.u_processor_tb.u_processor_inst.register_bank_inst.
+[treeopen] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file.
+[sst_width] 273
+[signals_width] 471
+[sst_expanded] 1
+[sst_vpaned_height] 296
+@28
+top.u_processor_tb.clk
+@22
+#{top.u_processor_tb.u_processor_inst.pc_out[6:0]} top.u_processor_tb.u_processor_inst.pc_out[6] top.u_processor_tb.u_processor_inst.pc_out[5] top.u_processor_tb.u_processor_inst.pc_out[4] top.u_processor_tb.u_processor_inst.pc_out[3] top.u_processor_tb.u_processor_inst.pc_out[2] top.u_processor_tb.u_processor_inst.pc_out[1] top.u_processor_tb.u_processor_inst.pc_out[0]
+@28
+top.u_processor_tb.u_processor_inst.jump
+@22
+#{top.u_processor_tb.u_processor_inst.control_unit_inst.opcode[7:0]} top.u_processor_tb.u_processor_inst.control_unit_inst.opcode[7] top.u_processor_tb.u_processor_inst.control_unit_inst.opcode[6] top.u_processor_tb.u_processor_inst.control_unit_inst.opcode[5] top.u_processor_tb.u_processor_inst.control_unit_inst.opcode[4] top.u_processor_tb.u_processor_inst.control_unit_inst.opcode[3] top.u_processor_tb.u_processor_inst.control_unit_inst.opcode[2] top.u_processor_tb.u_processor_inst.control_unit_inst.opcode[1] top.u_processor_tb.u_processor_inst.control_unit_inst.opcode[0]
+@28
+#{top.u_processor_tb.u_processor_inst.alu_op[2:0]} top.u_processor_tb.u_processor_inst.alu_op[2] top.u_processor_tb.u_processor_inst.alu_op[1] top.u_processor_tb.u_processor_inst.alu_op[0]
+@24
+#{top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][7:0]} top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][7] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][6] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][5] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][4] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][3] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][2] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][1] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[1][0]
+#{top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[2][7:0]} top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[2][7] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[2][6] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[2][5] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[2][4] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[2][3] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[2][2] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[2][1] top.u_processor_tb.u_processor_inst.register_bank_inst.reg_file[2][0]
+@22
+#{top.u_processor_tb.u_processor_inst.ram_inst.mem_inst[32][7:0]} top.u_processor_tb.u_processor_inst.ram_inst.mem_inst[32][7] top.u_processor_tb.u_processor_inst.ram_inst.mem_inst[32][6] top.u_processor_tb.u_processor_inst.ram_inst.mem_inst[32][5] top.u_processor_tb.u_processor_inst.ram_inst.mem_inst[32][4] top.u_processor_tb.u_processor_inst.ram_inst.mem_inst[32][3] top.u_processor_tb.u_processor_inst.ram_inst.mem_inst[32][2] top.u_processor_tb.u_processor_inst.ram_inst.mem_inst[32][1] top.u_processor_tb.u_processor_inst.ram_inst.mem_inst[32][0]
+[pattern_trace] 1
+[pattern_trace] 0
