@@ -58,6 +58,8 @@ begin
                '1' when opcode = x"9D" else -- STA abs,X
                '1' when opcode = x"BD" else -- LDA abs,X
                '1' when opcode = x"C9" else -- CMP imm
+               '1' when opcode = x"E0" else -- CPX imm
+               '1' when opcode = x"C0" else -- CPY imm
                '1' when opcode = x"38" else -- SEC impl
                '1' when opcode = x"E6" else -- INC zpg
                '0';
@@ -85,6 +87,8 @@ begin
                 '1' when opcode = x"B8" else -- CLV impl
                 '1' when opcode = x"C9" else -- CMP imm
                 '1' when opcode = x"C5" else -- CMP zpg
+                '1' when opcode = x"E0" else -- CPX imm
+                '1' when opcode = x"C0" else -- CPY imm
                 '1' when opcode = x"A8" else -- TAY
                 '1' when opcode = x"98" else -- TYA
                 '1' when opcode = x"E6" else -- INC zpg
@@ -112,7 +116,9 @@ begin
                 "11111" when opcode = x"38" else -- SEC impl
                 "00010" when opcode = x"9D" else -- STA abs,X
                 "00010" when opcode = x"BD" else -- LDA abs,X
+                "00010" when opcode = x"E0" else -- CPX imm
                 "00011" when opcode = x"98" else -- TYA
+                "00011" when opcode = x"C0" else -- CPY imm
                 oper(4 downto 0) when opcode = x"E6" else -- INC zpg
                 "00000";
 
@@ -127,13 +133,15 @@ begin
                 "00000";
 
     alu_op <= "001" when opcode = x"E9" else -- SBC imm
-              "001" when opcode = x"C9" else -- CMP imm
-              "001" when opcode = x"C5" else -- CMP zpg
               "011" when opcode = x"A9" else -- LDA imm
               "011" when opcode = x"A5" else -- LDA zpg
               "011" when opcode = x"85" else -- STA zpg
               "011" when opcode = x"A8" else -- TAY
               "011" when opcode = x"98" else -- TYA
+              "110" when opcode = x"C9" else -- CMP imm
+              "110" when opcode = x"C5" else -- CMP zpg
+              "110" when opcode = x"E0" else -- CPX imm
+              "110" when opcode = x"C0" else -- CPY imm
               "101" when opcode = x"E6" else -- INC zpg
               "000";
     
@@ -156,7 +164,9 @@ begin
                  b"0001_0000" when opcode = x"38" else -- SEC impl
                  b"0100_0000" when opcode = x"B8" else -- CLV impl
                  b"1011_0000" when opcode = x"C9" else -- CMP imm
-                 b"1011_0000" when opcode = x"C5" else -- CMP imm
+                 b"1011_0000" when opcode = x"C5" else -- CMP zpg
+                 b"1011_0000" when opcode = x"E0" else -- CPX imm
+                 b"1011_0000" when opcode = x"C0" else -- CPY imm
                  b"1010_0000" when opcode = x"A8" else -- TAY
                  b"1010_0000" when opcode = x"98" else -- TYA
                  b"1010_0000" when opcode = x"E6" else -- INC zpg
