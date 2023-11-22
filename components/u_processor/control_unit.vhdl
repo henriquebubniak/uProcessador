@@ -35,6 +35,12 @@ end control_unit;
 --  BPL rel 
 --  INC zpg
 
+-- LDA abs
+-- STA abs, Y
+-- BNE
+-- CPY imm
+-- CPX imm
+
 architecture a_control_unit of control_unit is
 begin
     
@@ -43,6 +49,7 @@ begin
             flags(7) when opcode = x"30" else -- BMI
             flags(4) when opcode = x"B0" else -- BCS
             not flags(7) when opcode = x"10" else -- BPL
+            not flags(5) when opcode = x"D0" else -- BNE
             '0';
 
     alu_src <= '1' when opcode = x"69" else -- ADC imm
@@ -135,6 +142,7 @@ begin
               "10" when opcode = x"30" else -- BMI
               "10" when opcode = x"B0" else -- BCS
               "10" when opcode = x"10" else -- BPL
+              "10" when opcode = x"D0" else -- BNE
               "00";
                 
                 -- n, v, z, c, 0000
