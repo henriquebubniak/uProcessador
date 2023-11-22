@@ -143,7 +143,7 @@ begin
     pc_clock <= '1' when counter_state = "00" else '0';
     rom_clock <= '1' when counter_state = "01" else '0';
     write_back <= '1' when counter_state = "11" else '0';
-
+    
     counter_inst: counter
         port map(
             clk => clk,
@@ -198,7 +198,6 @@ begin
             wr_en => flags_wr
         );
     
-    reg_wr_mux <= ram_data when mem_to_reg = '1' else alu_out;
     register_bank_inst : register_bank
         port map (
             reg_a_ad => reg_a_ad,
@@ -238,15 +237,17 @@ begin
     pc_plus_one <= pc_out + 1;
     branch_address <= pc_out + signal_extender(6 downto 0);
                         
+    
+    
+    signal_extender <= b"11" & cu_imm when cu_imm(5) = '1'
+                       else b"00" & cu_imm;
+    -- MUXES
+    reg_wr_mux <= ram_data when mem_to_reg = '1' else alu_out;
+    alu_src_mux <= signal_extender when alu_src = '1' else reg_b_out;
+    
     pc_address_mux <= pc_plus_one when pc_src = b"00" else 
                       jump_address when (pc_src = b"01")  else
                       branch_address when (pc_src = b"10" and jump = '1')
                       else pc_plus_one;
-    
-    signal_extender <= b"11" & cu_imm when cu_imm(5) = '1'
-                       else b"00" & cu_imm;
-
-    alu_src_mux <= signal_extender when alu_src = '1' else reg_b_out;
-    
 
 end a_u_processor;
