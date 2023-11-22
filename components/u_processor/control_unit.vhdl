@@ -27,8 +27,11 @@ end control_unit;
 --  BMI rel
 --  BEQ rel
 --  BCS rel
+
 --  CMP imm, zpg
--- TAY
+--  TAY
+--  TYA
+--  BPL rel 
 
 architecture a_control_unit of control_unit is
 begin
@@ -37,6 +40,7 @@ begin
             flags(5) when opcode = x"F0" else -- BEQ
             flags(7) when opcode = x"30" else -- BMI
             flags(4) when opcode = x"B0" else -- BCS
+            not flags(7) when opcode = x"10" else -- BPL
             '0';
 
     alu_src <= '1' when opcode = x"69" else -- ADC imm
@@ -121,6 +125,7 @@ begin
               "10" when opcode = x"F0" else -- BEQ
               "10" when opcode = x"30" else -- BMI
               "10" when opcode = x"B0" else -- BCS
+              "10" when opcode = x"10" else -- BPL
               "00";
                 
                 -- n, v, z, c, 0000
