@@ -33,6 +33,7 @@ end control_unit;
 --  TAY
 --  TYA
 --  BPL rel 
+--  INC zpg
 
 architecture a_control_unit of control_unit is
 begin
@@ -51,6 +52,7 @@ begin
                '1' when opcode = x"BD" else -- LDA abs,X
                '1' when opcode = x"C9" else -- CMP imm
                '1' when opcode = x"38" else -- SEC impl
+               '1' when opcode = x"E6" else -- INC zpg
                '0';
 
     write_en <= '1' when opcode = x"65" else -- ADC zpg
@@ -61,7 +63,8 @@ begin
                 '1' when opcode = x"A9" else -- LDA imm
                 '1' when opcode = x"BD" else -- LDA abs,X
                 '1' when opcode = x"A8" else -- TAY
-                '1' when opcode = x"98" else -- TYA 
+                '1' when opcode = x"98" else -- TYA
+                '1' when opcode = x"E6" else -- INC zpg
                 '0';
     
     flags_wr <= '1' when opcode = x"65" else -- ADC zpg
@@ -77,6 +80,7 @@ begin
                 '1' when opcode = x"C5" else -- CMP zpg
                 '1' when opcode = x"A8" else -- TAY
                 '1' when opcode = x"98" else -- TYA
+                '1' when opcode = x"E6" else -- INC zpg
                 '0';
 
     write_ad <= "00001" when opcode = x"65" else -- ADC zpg
@@ -88,6 +92,7 @@ begin
                 "00001" when opcode = x"98" else -- TYA
                 "00011" when opcode = x"A8" else -- TAY
                 oper(4 downto 0) when opcode = x"85" else -- STA zpg
+                oper(4 downto 0) when opcode = x"E6" else -- INC zpg
                 "00000";
 
     reg_a_ad <= "00001" when opcode = x"65" else -- ADC zpg
@@ -101,6 +106,7 @@ begin
                 "00010" when opcode = x"9D" else -- STA abs,X
                 "00010" when opcode = x"BD" else -- LDA abs,X
                 "00011" when opcode = x"98" else -- TYA
+                oper(4 downto 0) when opcode = x"E6" else -- INC zpg
                 "00000";
 
     reg_b_ad <= oper(4 downto 0) when opcode = x"65" else -- ADC zpg
@@ -144,6 +150,7 @@ begin
                  b"1011_0000" when opcode = x"C5" else -- CMP imm
                  b"1010_0000" when opcode = x"A8" else -- TAY
                  b"1010_0000" when opcode = x"98" else -- TYA
+                 b"1010_0000" when opcode = x"E6" else -- INC zpg
                  b"0000_0000";
     
     mem_wr <= '1' when opcode = x"9D" else -- STA abs,X
@@ -153,6 +160,7 @@ begin
                   '0';
 
     imm <= b"11_1111" when opcode = x"38" else
+           b"00_0001" when opcode = x"E6" else
            oper;
 
 
