@@ -20,7 +20,9 @@ architecture alu_arch of alu is
     
     --<operation>_r(esult)
     signal sum_r: unsigned(8 downto 0) := (others => '0');
+    signal sum_noc: unsigned(8 downto 0) := (others => '0');
     signal sub_r: unsigned(7 downto 0) := (others => '0');
+    signal sub_noc: unsigned(7 downto 0) := (others => '0');
     signal and_r: unsigned(7 downto 0) := x"00";
     signal or_r: unsigned(7 downto 0) := x"00";
     signal xor_r: unsigned(7 downto 0) := x"00";
@@ -33,9 +35,10 @@ begin
     -- sum and sub
     sum_r <= ('0'& op0) + ('0'& op1) + (b"0000_0000" & carry);
     sub_r <= op0 - op1 - (b"0000_000" & not carry);
-    
-    --sum_r <= ('0'& op0) + ('0'& op1);
-    --sub_r <= op0 - op1;
+
+    -- sum and sub no carry
+    sum_noc <= ('0'& op0) + ('0'& op1);
+    sub_noc <= op0 - op1;
 
     -- logical
     and_r <= op0 and op1;
@@ -48,6 +51,8 @@ begin
                and_r when alu_op = "010" else
                or_r when alu_op = "011" else
                xor_r when alu_op = "100" else
+               sum_noc(7 downto 0) when alu_op = "101" else
+               sub_noc when alu_op = "110" else
                x"00";
 
     --flags

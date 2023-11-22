@@ -127,6 +127,7 @@ begin
               "011" when opcode = x"85" else -- STA zpg
               "011" when opcode = x"A8" else -- TAY
               "011" when opcode = x"98" else -- TYA
+              "101" when opcode = x"E6" else -- INC zpg
               "000";
     
     pc_src <= "01" when opcode = x"4C" else -- JMP
