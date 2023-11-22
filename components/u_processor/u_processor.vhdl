@@ -37,6 +37,7 @@ architecture a_u_processor of u_processor is
             write_ad, reg_a_ad, reg_b_ad : out unsigned(4 downto 0);
             alu_op : out unsigned(2 downto 0);
             flag_mask: out unsigned(7 downto 0);
+            imm: out unsigned(5 downto 0);
             mem_wr, mem_to_reg: out std_logic
         );
     end component;
@@ -109,6 +110,7 @@ architecture a_u_processor of u_processor is
     signal mem_to_reg, mem_wr: std_logic := '0';
     signal ram_data: unsigned(7 downto 0) := x"00";
     signal reg_wr_mux: unsigned(7 downto 0) := x"00";
+    signal cu_imm: unsigned(5 downto 0) := b"00_0000";
 
 begin
     pc_clock <= '1' when counter_state = "00" else '0';
@@ -137,6 +139,7 @@ begin
             reg_a_ad => reg_a_ad,
             reg_b_ad => reg_b_ad,
             flag_mask => flag_mask,
+            imm => cu_imm,
             mem_wr => mem_wr,
             mem_to_reg => mem_to_reg
         );
@@ -204,7 +207,7 @@ begin
             r_data_out => ram_data
         );
 
-    jump_address <= "0"&rom_out(13 downto 8);
+    jump_address <= "0"&cu_imm;
     pc_plus_one <= pc_out + 1;
     branch_address <= pc_out + signal_extender(6 downto 0);
                         
@@ -213,8 +216,8 @@ begin
                       branch_address when (pc_src = b"10" and jump = '1')
                       else pc_plus_one;
     
-    signal_extender <= b"11" & rom_out(13 downto 8) when rom_out(13) = '1'
-                       else b"00" & rom_out(13 downto 8);
+    signal_extender <= b"11" & cu_imm when cu_imm(5) = '1'
+                       else b"00" & cu_imm;
 
     alu_src_mux <= signal_extender when alu_src = '1' else reg_b_out;
     

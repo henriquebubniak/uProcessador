@@ -12,6 +12,7 @@ entity control_unit is
         write_ad, reg_a_ad, reg_b_ad : out unsigned(4 downto 0);
         alu_op : out unsigned(2 downto 0);
         flag_mask: out unsigned(7 downto 0);
+        imm: out unsigned(5 downto 0);
         mem_wr, mem_to_reg: out std_logic
     );
 end control_unit;
@@ -49,6 +50,7 @@ begin
                '1' when opcode = x"9D" else -- STA abs,X
                '1' when opcode = x"BD" else -- LDA abs,X
                '1' when opcode = x"C9" else -- CMP imm
+               '1' when opcode = x"38" else -- SEC impl
                '0';
 
     write_en <= '1' when opcode = x"65" else -- ADC zpg
@@ -149,6 +151,9 @@ begin
     
     mem_to_reg <= '1' when opcode = x"BD" else -- LDA abs,X
                   '0';
+
+    imm <= b"11_1111" when opcode = x"38" else
+           oper;
 
 
 
