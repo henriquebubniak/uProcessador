@@ -56,6 +56,7 @@ begin
                '1' when opcode = x"E9" else -- SBC imm
                '1' when opcode = x"A9" else -- LDA imm
                '1' when opcode = x"9D" else -- STA abs,X
+               '1' when opcode = x"99" else -- STA abs,Y
                '1' when opcode = x"BD" else -- LDA abs,X
                '1' when opcode = x"C9" else -- CMP imm
                '1' when opcode = x"E0" else -- CPX imm
@@ -119,6 +120,7 @@ begin
                 "00010" when opcode = x"E0" else -- CPX imm
                 "00011" when opcode = x"98" else -- TYA
                 "00011" when opcode = x"C0" else -- CPY imm
+                "00011" when opcode = x"99" else -- STA abs,Y
                 oper(4 downto 0) when opcode = x"E6" else -- INC zpg
                 "00000";
 
@@ -130,6 +132,7 @@ begin
                 oper(4 downto 0) when opcode = x"C5" else -- CMP zpg
                 "11111" when opcode = x"38" else          -- SEC impl
                 "00001" when opcode = x"9D" else          -- STA abs,X
+                "00001" when opcode = x"99" else          -- STA abs,Y
                 "00000";
 
     alu_op <= "001" when opcode = x"E9" else -- SBC imm
