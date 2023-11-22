@@ -9,6 +9,9 @@ entity u_processor is
 end u_processor;
 
 architecture a_u_processor of u_processor is
+
+-- ====================================== COMPONENTS ====================================== --
+
     component rom is
         port (
             clk : in std_logic;
@@ -24,7 +27,6 @@ architecture a_u_processor of u_processor is
             counter : out unsigned(6 downto 0)
         );
     end component;
-
     
     component control_unit is
         port (
@@ -85,33 +87,58 @@ architecture a_u_processor of u_processor is
         );
     end component ram;
     
-    signal rom_out : unsigned(13 downto 0) := (others => '0');
-    signal pc_clock, rom_clock, write_back, jump, alu_src, write_en, zero, ovf, gt, st, eq : std_logic := '0'; 
-    signal pc_plus_one, jump_address, pc_address_mux, pc_out : unsigned(6 downto 0) := (others => '0');
-    signal reg_a_out, reg_b_out, alu_src_mux, alu_out : unsigned(7 downto 0) := (others => '0');
-    signal alu_op : unsigned(2 downto 0) := (others => '0');
-    signal write_ad, reg_a_ad, reg_b_ad : unsigned(4 downto 0) := (others => '0');
+-- ====================================== END - COMPONENTS ====================================== --
 
-    signal flags_wr: std_logic := '0';
-    signal flags_in, flags_out: unsigned(7 downto 0) := x"00";
-
-    signal n,v,z,c: std_logic := '0';
-
-    signal signal_extender: unsigned(7 downto 0) := x"00";
-
-    signal branch_address: unsigned(6 downto 0);
-    signal pc_src: unsigned(1 downto 0) := b"00";
-
-    signal counter_state: unsigned(1 downto 0) := "00";
+-- ============================================ SIGNALS ============================================ --
+    -- PC
+    signal pc_plus_one: unsigned(6 downto 0) := b"000_0000";
+    signal pc_out: unsigned(6 downto 0) := b"000_0000";
+    signal branch_address: unsigned(6 downto 0) := b"000_0000";
+    signal jump_address: unsigned(6 downto 0) := b"000_0000";
     
+    -- ROM 
+    signal rom_out : unsigned(13 downto 0) := (others => '0');
+    
+    -- CONTROL UNIT
+    signal write_ad, reg_a_ad, reg_b_ad : unsigned(4 downto 0) := b"0_0000";
+    signal cu_imm: unsigned(5 downto 0) := b"00_0000";
     signal flag_mask: unsigned(7 downto 0) := x"00";
+    signal alu_op : unsigned(2 downto 0) := "000";
+    signal pc_src: unsigned(1 downto 0) := b"00";
+    signal flags_wr: std_logic := '0';
+    signal jump: std_logic := '0';
+    signal alu_src: std_logic := '0';
+    signal write_en: std_logic := '0';
+    signal mem_to_reg, mem_wr: std_logic := '0';
+   
+    --REGISTER FILE
+    signal reg_a_out: unsigned(7 downto 0) := x"00";
+    signal reg_b_out: unsigned(7 downto 0) := x"00";
+    
+    -- STATUS REGISTER
+    signal n,v,z,c: std_logic := '0';
+    signal flags_in, flags_out: unsigned(7 downto 0) := x"00";
     signal flag_filter_out: unsigned(7 downto 0) := x"00";
 
-    signal mem_to_reg, mem_wr: std_logic := '0';
-    signal ram_data: unsigned(7 downto 0) := x"00";
-    signal reg_wr_mux: unsigned(7 downto 0) := x"00";
-    signal cu_imm: unsigned(5 downto 0) := b"00_0000";
+    -- ALU
+    signal alu_out: unsigned(7 downto 0) := x"00";
 
+    -- RAM
+    signal ram_data: unsigned(7 downto 0) := x"00";
+
+    -- MUXES
+    signal reg_wr_mux: unsigned(7 downto 0) := x"00";
+    signal alu_src_mux: unsigned(7 downto 0) := x"00";
+    signal pc_address_mux: unsigned(6 downto 0) := b"000_0000";
+
+    -- CLOCKS
+    signal counter_state: unsigned(1 downto 0) := "00";
+    signal pc_clock, rom_clock, write_back: std_logic := '0';
+
+    -- MISC
+    signal signal_extender: unsigned(7 downto 0) := x"00";
+
+-- ============================================  END - SIGNALS ============================================ --
 begin
     pc_clock <= '1' when counter_state = "00" else '0';
     rom_clock <= '1' when counter_state = "01" else '0';
