@@ -58,6 +58,7 @@ begin
                '1' when opcode = x"9D" else -- STA abs,X
                '1' when opcode = x"99" else -- STA abs,Y
                '1' when opcode = x"BD" else -- LDA abs,X
+               '1' when opcode = x"AD" else -- LDA abs
                '1' when opcode = x"C9" else -- CMP imm
                '1' when opcode = x"E0" else -- CPX imm
                '1' when opcode = x"C0" else -- CPY imm
@@ -72,6 +73,7 @@ begin
                 '1' when opcode = x"E9" else -- SBC imm
                 '1' when opcode = x"A9" else -- LDA imm
                 '1' when opcode = x"BD" else -- LDA abs,X
+                '1' when opcode = x"AD" else -- LDA abs
                 '1' when opcode = x"A8" else -- TAY
                 '1' when opcode = x"98" else -- TYA
                 '1' when opcode = x"E6" else -- INC zpg
@@ -83,6 +85,7 @@ begin
                 '1' when opcode = x"A9" else -- LDA imm
                 '1' when opcode = x"A5" else -- LDA zpg
                 '1' when opcode = x"BD" else -- LDA abs,X
+                '1' when opcode = x"AD" else -- LDA abs
                 '1' when opcode = x"18" else -- CLC impl
                 '1' when opcode = x"38" else -- SEC impl
                 '1' when opcode = x"B8" else -- CLV impl
@@ -101,6 +104,7 @@ begin
                 "00001" when opcode = x"A9" else -- LDA imm
                 "00001" when opcode = x"A5" else -- LDA zpg
                 "00001" when opcode = x"BD" else -- LDA abs,X
+                "00001" when opcode = x"AD" else -- LDA abs
                 "00001" when opcode = x"98" else -- TYA
                 "00011" when opcode = x"A8" else -- TAY
                 oper(4 downto 0) when opcode = x"85" else -- STA zpg
@@ -138,6 +142,7 @@ begin
     alu_op <= "001" when opcode = x"E9" else -- SBC imm
               "011" when opcode = x"A9" else -- LDA imm
               "011" when opcode = x"A5" else -- LDA zpg
+              "011" when opcode = x"AD" else -- LDA abs
               "011" when opcode = x"85" else -- STA zpg
               "011" when opcode = x"A8" else -- TAY
               "011" when opcode = x"98" else -- TYA
@@ -163,6 +168,7 @@ begin
                  b"1010_0000" when opcode = x"A9" else -- LDA imm
                  b"1010_0000" when opcode = x"A5" else -- LDA zpg
                  b"1010_0000" when opcode = x"BD" else -- LDA abs,X
+                 b"1010_0000" when opcode = x"AD" else -- LDA abs
                  b"0001_0000" when opcode = x"18" else -- CLC impl
                  b"0001_0000" when opcode = x"38" else -- SEC impl
                  b"0100_0000" when opcode = x"B8" else -- CLV impl
@@ -176,9 +182,11 @@ begin
                  b"0000_0000";
     
     mem_wr <= '1' when opcode = x"9D" else -- STA abs,X
+              '1' when opcode = x"99" else -- STA abs,Y
               '0';
     
     mem_to_reg <= '1' when opcode = x"BD" else -- LDA abs,X
+                  '1' when opcode = x"AD" else -- LDA abs
                   '0';
 
     imm <= b"11_1111" when opcode = x"38" else
