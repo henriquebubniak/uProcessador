@@ -34,8 +34,10 @@ Os opcodes são formados pelos 8 bits menos significativos. Os 6 bits mais signi
 | tya       | 98     | -        | A = Y           | ok
 | cmp imm   | C9     | val      | A - val         | ok
 | cmp zpg   | C5     | adr      | A - mem[adr]    | ok
-| cpx imm   | E0     | val      | X - val         | not ok
-| cpy imm   | C0     | val      | Y - val         | not ok
+| cpx imm   | E0     | val      | X - val         | ok
+| cpx zpg   | E4     | adr      | X - mem[adr]    | ok
+| cpy imm   | C0     | val      | Y - val         | ok
+| cpy zpg   | C4     | adr      | Y - mem[adr]    | ok
 | sec       | 38     | -        | C = 1           | ok
 | clc       | 18     | -        | C = 0           | ok
 | clv       | B8     | -        | V = 0           | ok

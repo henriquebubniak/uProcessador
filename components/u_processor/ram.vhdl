@@ -14,7 +14,6 @@ end ram;
 architecture behavioural of ram is
     type mem is array(63 downto 0) of unsigned(7 downto 0);
     signal mem_inst: mem := (
-                    63 => x"FF",
                     others => x"00"
                     );
 begin
