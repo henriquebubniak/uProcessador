@@ -72,7 +72,7 @@ begin
     c <= sum_r(8) when alu_op = "000" else 
          not sub_r(7) when alu_op = "001" else
          sum_noc(8) when alu_op = "101" else
-         sub_noc(7) when alu_op = "110" else
+         not sub_noc(7) when alu_op = "110" else
          '0';
 
     n <= mux_out(7);
