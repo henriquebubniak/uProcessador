@@ -10,6 +10,10 @@
 | 3        | Y
 | 4..      | Zeropage
 
+## Flags
+
+NZVC0000
+
 ## Instruções
 
 Os opcodes são formados pelos 8 bits menos significativos. Os 6 bits mais significativos é o operando. Segue tabela de instruções:
